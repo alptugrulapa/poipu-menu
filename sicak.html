@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="tr" data-ekran="sicak" data-taraf="sol">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Poipu — Coffees</title>
+<meta name="robots" content="noindex">
+<link rel="preload" href="fonts/inter.woff2?v=2026-09" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter-ext.woff2?v=2026-09" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face {
+  font-family: 'Inter';
+  src: url('fonts/inter-ext.woff2?v=2026-09') format('woff2');
+  font-weight: 400 800;
+  font-display: block;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
+                 U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF,
+                 U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
+                 U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('fonts/inter.woff2?v=2026-09') format('woff2');
+  font-weight: 400 800;
+  font-display: block;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+                 U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F,
+                 U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+:root {
+  --bordo: #710014;
+  --krem: #F2F1ED;
+  --cizgi: rgba(113, 0, 20, 0.16);
+  --cizgi-ters: rgba(242, 241, 237, 0.22);
+  --urun-boyut: 2.40vh;   
+  --fiyat-boyut: 2.40vh;
+  --ikinci-fiyat: 1.70vh;
+  --baslik-boyut: 1.84vh;
+  --tarif-boyut: 1.36vh;
+  --rozet-boyut: 1.10vh;
+  --ekran-baslik: 3.13vh;
+  --ekran-altbaslik: 1.57vh;
+  --kur-baslik: 1.77vh;
+  --aroma-boyut: 2.22vh;   
+  --aroma-aralik: 1.6vw;   
+  --serit-sure: 42s;
+  --kenar: 5vh;
+  --kenar-yatay: 5vw;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;       
+}
+body {
+  background: var(--krem);
+  color: var(--bordo);
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  padding: var(--kenar) var(--kenar-yatay);
+  gap: 2vh;
+}
+.ekran-basligi {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: baseline;
+  gap: 1.2vw;
+  border-bottom: 0.22vh solid var(--bordo);
+  padding-bottom: 1vh;
+}
+.ekran-basligi h1 {
+  margin: 0;
+  font-size: var(--ekran-baslik);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+.ekran-altbaslik {
+  font-size: var(--ekran-altbaslik);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  opacity: 0.65;
+}
+.ekran {
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 4.5vw;
+  min-height: 0;
+}
+.sutun {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  justify-content: space-between;
+}
+.bolum { margin-top: 2.2vh; }
+.sutun > .bolum:first-child { margin-top: 0; }
+.sutun > .bolum:only-child {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.bolum-basligi {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1vw;
+  margin: 0 0 1.1vh;
+  padding-bottom: 0.7vh;
+  border-bottom: 0.22vh solid var(--bordo);
+  font-size: var(--baslik-boyut);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.1;
+}
+.ortak-fiyat {
+  font-size: var(--ikinci-fiyat);
+  font-weight: 600;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+.urunler { list-style: none; margin: 0; padding: 0; }
+.urun {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  column-gap: 1.5vw;
+  padding: 1.2vh 0;
+  font-size: var(--urun-boyut);
+  line-height: 1.08;
+}
+.urun + .urun { border-top: 0.1vh solid var(--cizgi); }
+.ad { font-weight: 500; }
+.fiyat {
+  font-size: var(--fiyat-boyut);
+  font-weight: 700;
+  white-space: nowrap;
+  text-align: right;
+}
+.fiyat b { font-weight: 700; }
+.aromali, .etiket, .varyant {
+  font-size: var(--ikinci-fiyat);
+  font-weight: 600;
+}
+.varyant b { font-size: var(--ikinci-fiyat); }
+.ayrac { opacity: 0.45; padding: 0 0.45vw; font-weight: 400; }
+.tarif {
+  grid-column: 1 / -1;
+  font-size: var(--tarif-boyut);
+  font-weight: 400;
+  opacity: 0.72;
+  line-height: 1.15;
+  padding-top: 0.25vh;
+}
+.rozet {
+  font-size: var(--rozet-boyut);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  margin-left: 0.8vw;
+  padding: 0.25vh 0.7vw;
+  border: 0.1vh solid var(--cizgi);
+  border-radius: 2vh;
+  white-space: nowrap;
+  vertical-align: middle;
+  opacity: 0.85;
+}
+.bolum.hero {
+  background: var(--bordo);
+  color: var(--krem);
+  padding: 1.8vh 1.8vw 1.4vh;
+  border-radius: 0.9vh;
+}
+.bolum.hero .bolum-basligi { border-bottom-color: var(--cizgi-ters); }
+.bolum.basliksiz > .urunler { margin-top: 0; }
+.bolum.hero .urun + .urun { border-top-color: var(--cizgi-ters); }
+.bolum.hero .rozet { border-color: var(--cizgi-ters); }
+.kur-bandi { flex: 0 0 auto; }
+.kur-bilgi {
+  display: flex;
+  align-items: baseline;
+  gap: 0 1vw;
+  margin: 0 0 1.4vh;
+  font-size: var(--kur-baslik);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.1;
+}
+.kur-fark {
+  font-weight: 800;
+  letter-spacing: 0;
+}
+.serit {
+  display: flex;
+  overflow: hidden;
+  min-width: 0;
+  margin: 0 calc(-1 * var(--kenar-yatay));
+  background: var(--bordo);
+  color: var(--krem);
+  padding: 1.4vh 0;
+}
+.serit-ray {
+  list-style: none;
+  margin: 0;
+  padding: 0 var(--aroma-aralik) 0 0;   
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0 var(--aroma-aralik);
+  font-size: var(--aroma-boyut);
+  font-weight: 500;
+  white-space: nowrap;
+  animation: poipu-serit var(--serit-sure) linear infinite;
+}
+.serit-ray li::after {
+  content: '·';
+  margin-left: var(--aroma-aralik);
+  opacity: 0.5;
+}
+@keyframes poipu-serit {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .serit-ray { animation: none; }
+}
+</style>
+</head>
+<body>
+<header class="ekran-basligi">
+<h1 lang="en">Coffees</h1><span class="ekran-altbaslik" lang="en">cold &amp; hot</span>
+</header>
+<main class="ekran">
+<div class="sutun">
+<section class="bolum">
+      <h2 class="bolum-basligi">KAHVE</h2>
+      <ul class="urunler">
+<li class="urun">
+        <span class="ad" lang="en">Espresso</span>
+        <span class="fiyat fiyat-coklu"><span class="varyant">tek <b>120 ₺</b></span><span class="ayrac">·</span><span class="varyant">duble <b>135 ₺</b></span></span>
+        
+      </li>
+<li class="urun">
+        <span class="ad">Türk Kahvesi</span>
+        <span class="fiyat"><b>130 ₺</b></span>
+        
+      </li>
+<li class="urun">
+        <span class="ad">Filtre Kahve</span>
+        <span class="fiyat"><b>170 ₺</b></span>
+        
+      </li>
+<li class="urun">
+        <span class="ad" lang="en">Americano</span>
+        <span class="fiyat"><b>175 ₺</b></span>
+        
+      </li>
+<li class="urun">
+        <span class="ad" lang="en">Red Eye</span>
+        <span class="fiyat"><b>200 ₺</b></span>
+        <span class="tarif">filtre + 1 shot</span>
+      </li>
+<li class="urun">
+        <span class="ad" lang="en">Black Eye</span>
+        <span class="fiyat"><b>230 ₺</b></span>
+        <span class="tarif">filtre + 2 shot</span>
+      </li>
+      </ul>
+    </section>
+<section class="bolum">
+      <h2 class="bolum-basligi">MATCHA &amp; UBE</h2>
+      <ul class="urunler">
+<li class="urun">
+        <span class="ad" lang="en">Matcha Latte</span>
+        <span class="fiyat"><b>230 ₺</b></span>
+        
+      </li>
+<li class="urun">
+        <span class="ad" lang="en">Ube Latte</span>
+        <span class="fiyat"><b>275 ₺</b></span>
+        
+      </li>
+<li class="urun">
+        <span class="ad">Sade Matcha</span>
+        <span class="fiyat"><b>255 ₺</b></span>
+        <span class="tarif">sütsüz, suyla çırpılmış</span>
+      </li>
+      </ul>
+    </section>
+</div>
+<div class="sutun">
+<section class="bolum">
+      <h2 class="bolum-basligi">SÜTLÜ KAHVE</h2>
+      <ul class="urunler">
+<li class="urun">
+        <span class="ad" lang="en">Latte</span>
+        <span class="fiyat"><b>200 ₺</b></span>
+        
+      </li>
+<li class="urun">
+        <span class="ad" lang="en">Cappuccino</span>
+        <span class="fiyat"><b>210 ₺</b></span>
+        
+      </li>
+<li class="urun">
+        <span class="ad" lang="en">Flat White</span>
+        <span class="fiyat"><b>210 ₺</b></span>
+        
+      </li>
+<li class="urun">
+        <span class="ad" lang="en">Cortado</span>
+        <span class="fiyat"><b>210 ₺</b></span>
+        
+      </li>
+<li class="urun">
+        <span class="ad" lang="en">Mocha</span>
+        <span class="fiyat"><b>235 ₺</b></span>
+        <span class="tarif">klasik veya beyaz</span>
+      </li>
+<li class="urun">
+        <span class="ad" lang="en">Caramel Macchiato</span>
+        <span class="fiyat"><b>235 ₺</b></span>
+        <span class="tarif">vanilya tabanlı, üstü karamel soslu</span>
+      </li>
+      </ul>
+    </section>
+<section class="bolum">
+      <h2 class="bolum-basligi">KAHVESİZ</h2>
+      <ul class="urunler">
+<li class="urun">
+        <span class="ad">Demleme Çay</span>
+        <span class="fiyat"><b>85 ₺</b></span>
+        
+      </li>
+<li class="urun">
+        <span class="ad">Sıcak Çikolata</span>
+        <span class="fiyat"><b>210 ₺</b></span>
+        <span class="tarif">sütlü veya beyaz</span>
+      </li>
+<li class="urun">
+        <span class="ad">Salep</span>
+        <span class="fiyat"><b>210 ₺</b></span>
+        
+      </li>
+<li class="urun">
+        <span class="ad" lang="en">Chai Tea Latte</span>
+        <span class="fiyat"><b>210 ₺</b></span>
+        
+      </li>
+      </ul>
+    </section>
+</div>
+</main>
+<footer class="kur-bandi">
+      <p class="kur-bilgi"><span>Latte · Matcha · Ube · Milkshake</span><span class="kur-fark">+25 ₺</span></p>
+      <div class="serit"><ul class="serit-ray"><li>Vanilya</li><li>Karamel</li><li>Tuzlu Karamel</li><li>Toffee Nut</li><li>Cookie</li><li>Oreo</li><li>Cheesecake</li><li>Probis</li><li>Irish</li><li>Çilek</li><li>Hindistan Cevizi</li><li>Balkabağı</li><li>Snickers</li><li>Danone</li><li>Lotus</li><li>Tiramisu</li><li>Coco Star</li></ul><ul class="serit-ray" aria-hidden="true"><li>Vanilya</li><li>Karamel</li><li>Tuzlu Karamel</li><li>Toffee Nut</li><li>Cookie</li><li>Oreo</li><li>Cheesecake</li><li>Probis</li><li>Irish</li><li>Çilek</li><li>Hindistan Cevizi</li><li>Balkabağı</li><li>Snickers</li><li>Danone</li><li>Lotus</li><li>Tiramisu</li><li>Coco Star</li></ul></div>
+    </footer>
+<script>
+function poipuMevsimIcinde(simdi, baslangic, bitis) {
+  if (baslangic <= bitis) {
+    return simdi >= baslangic && simdi <= bitis;
+  }
+  return simdi >= baslangic || simdi <= bitis;
+}
+(function () {
+  var POIPU_MEVSIM_BICIM = /^\d{2}-\d{2}$/;
+  var bugun = new Date();
+  var ay = String(bugun.getMonth() + 1);
+  var gun = String(bugun.getDate());
+  if (ay.length < 2) { ay = '0' + ay; }
+  if (gun.length < 2) { gun = '0' + gun; }
+  var simdi = ay + '-' + gun;
+  var ogeler = document.querySelectorAll('[data-mevsim-baslangic]');
+  for (var i = 0; i < ogeler.length; i++) {
+    var oge = ogeler[i];
+    var b = oge.getAttribute('data-mevsim-baslangic');
+    var s = oge.getAttribute('data-mevsim-bitis');
+    if (!POIPU_MEVSIM_BICIM.test(b) || !POIPU_MEVSIM_BICIM.test(s)) {
+      oge.hidden = false;
+      continue;
+    }
+    oge.hidden = !poipuMevsimIcinde(simdi, b, s);
+  }
+})();
+</script>
+</body>
+</html>
