@@ -29,9 +29,9 @@
 }
 :root {
   --bordo: #710014;
-  --krem: #F2F1ED;
+  --acik: #FFFFFF;
   --cizgi: rgba(113, 0, 20, 0.16);
-  --cizgi-ters: rgba(242, 241, 237, 0.22);
+  --cizgi-ters: rgba(255, 255, 255, 0.22);
   --urun-boyut: 2.40vh;   
   --fiyat-boyut: 2.40vh;
   --ikinci-fiyat: 1.70vh;
@@ -56,7 +56,7 @@ html, body {
   overflow: hidden;       
 }
 body {
-  background: var(--krem);
+  background: var(--acik);
   color: var(--bordo);
   font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
   font-weight: 500;
@@ -173,7 +173,7 @@ body {
 }
 .bolum.hero {
   background: var(--bordo);
-  color: var(--krem);
+  color: var(--acik);
   padding: 1.8vh 1.8vw 1.4vh;
   border-radius: 0.9vh;
 }
@@ -202,7 +202,7 @@ body {
   min-width: 0;
   margin: 0 calc(-1 * var(--kenar-yatay));
   background: var(--bordo);
-  color: var(--krem);
+  color: var(--acik);
   padding: 1.4vh 0;
 }
 .serit-ray {
@@ -344,6 +344,16 @@ function poipuMevsimIcinde(simdi, baslangic, bitis) {
       continue;
     }
     oge.hidden = !poipuMevsimIcinde(simdi, b, s);
+  }
+})();
+(function () {
+  var raylar = document.querySelectorAll('.serit-ray');
+  if (!raylar.length) { return; }
+  var sure = parseFloat(getComputedStyle(raylar[0]).animationDuration);
+  if (!(sure > 0)) { return; }
+  var faz = (Date.now() / 1000) % sure;
+  for (var i = 0; i < raylar.length; i++) {
+    raylar[i].style.animationDelay = '-' + faz.toFixed(3) + 's';
   }
 })();
 </script>
