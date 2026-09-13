@@ -17,7 +17,12 @@ bozulmadan çalışır. Ölçüler ekran yüksekliğine göre hesaplanır, sabit
 
 Notlar:
 - Tabelanın tarayıcısı sayfayı her gösterimde yeniden yükler; font dosyaları depo
-  içinde durduğu için internet kesilse bile menü bozulmaz.
+  içinde durduğu için internet kesilse bile menü bozulmaz. Aynısı görseller ve
+  video için de geçerli — dışarıdan hiçbir dosya çekilmiyor.
+- `soguk.html` bir video taşıyor (`icecek/hero.mp4`, 13 MB). Sayfanın ilk açılışı
+  bu yüzden ötekinden ağır; bir kez indikten sonra fark kalmaz. Video **sessiz** ve
+  otomatik oynar. Herhangi bir sebeple oynamazsa sayfa donmaz: büyüyen görsel
+  gizlenir, altı içecek şeritte durmaya ve soldaki satır sırayla yanmaya devam eder.
 - Mevsimlik satır cihazın **tarihine** göre görünür/gizlenir. Ekranın saati ve saat
   dilimi yanlışsa satır yanlış zamanda görünür — kurulumda kontrol edin.
 - Hareket azaltma ayarı açık bir cihazda alttaki kayan şerit durur, yazılar okunur
