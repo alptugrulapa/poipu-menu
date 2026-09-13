@@ -99,14 +99,10 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 0;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 .bolum { margin-top: 2.2vh; }
 .sutun > .bolum:first-child { margin-top: 0; }
-.sutun > .bolum:only-child {
-  margin-top: auto;
-  margin-bottom: auto;
-}
 .bolum-basligi {
   display: flex;
   align-items: baseline;
@@ -184,9 +180,14 @@ body {
 .kur-bandi { flex: 0 0 auto; }
 .kur-bilgi {
   display: flex;
+  width: fit-content;
   align-items: baseline;
   gap: 0 1vw;
-  margin: 0 0 1.4vh;
+  margin: 0 0 0 calc(-1 * var(--kenar-yatay));
+  padding: 1.1vh 1.8vw;
+  background: var(--bordo);
+  color: var(--acik);
+  border-radius: 0 0.9vh 0 0;
   font-size: var(--kur-baslik);
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -195,15 +196,18 @@ body {
 .kur-fark {
   font-weight: 800;
   letter-spacing: 0;
+  text-decoration: underline;
+  text-underline-offset: 0.62em;
+  text-decoration-thickness: 0.07em;
 }
 .serit {
   display: flex;
   overflow: hidden;
   min-width: 0;
-  margin: 0 calc(-1 * var(--kenar-yatay));
+  margin: 0 calc(-1 * var(--kenar-yatay)) calc(-1 * var(--kenar));
   background: var(--bordo);
   color: var(--acik);
-  padding: 1.4vh 0;
+  padding: 1.4vh 0 3vh;
 }
 .serit-ray {
   list-style: none;
@@ -230,6 +234,54 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .serit-ray { animation: none; }
 }
+.aroma-vitrin {
+  margin-top: auto;
+  flex: 0 0 auto;
+  height: 13.5vh;
+  position: relative;
+}
+.aroma-kutu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3vh;
+  height: 20.5vh;
+  width: 100%;
+}
+.aroma-kutu img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.28s linear;
+}
+.aroma-kutu img.acik { opacity: 1; }
+.serit-ray li > span {
+  position: relative;
+  border-radius: 0.6vh;
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  transition: color 0.2s linear, background-color 0.2s linear, box-shadow 0.2s linear,
+              border-radius 0.2s linear;
+}
+.serit-ray li > span::before {
+  content: "";
+  position: absolute;
+  left: -0.42vw;
+  right: -0.42vw;
+  bottom: 100%;
+  height: 0;
+  background: var(--acik);
+  transition: height 0.2s linear;
+}
+.serit-ray li.vurgulu > span {
+  color: var(--bordo);
+  background: var(--acik);
+  border-radius: 0 0 0.6vh 0.6vh;
+  box-shadow: 0 0 0 0.42vw var(--acik);
+}
+.serit-ray li.vurgulu > span::before { height: 1.9vh; }
 </style>
 </head>
 <body>
@@ -274,22 +326,27 @@ body {
       </ul>
     </section>
 <section class="bolum">
-      <h2 class="bolum-basligi">MATCHA &amp; UBE</h2>
+      <h2 class="bolum-basligi">KAHVESİZ</h2>
       <ul class="urunler">
 <li class="urun">
-        <span class="ad" lang="en">Matcha Latte</span>
-        <span class="fiyat"><b>230 ₺</b></span>
+        <span class="ad">Demleme Çay</span>
+        <span class="fiyat"><b>70 ₺</b></span>
         
       </li>
 <li class="urun">
-        <span class="ad" lang="en">Ube Latte</span>
-        <span class="fiyat"><b>275 ₺</b></span>
+        <span class="ad">Sıcak Çikolata</span>
+        <span class="fiyat"><b>210 ₺</b></span>
+        <span class="tarif">sütlü veya beyaz</span>
+      </li>
+<li class="urun">
+        <span class="ad">Salep</span>
+        <span class="fiyat"><b>210 ₺</b></span>
         
       </li>
 <li class="urun">
-        <span class="ad">Sade Matcha</span>
-        <span class="fiyat"><b>255 ₺</b></span>
-        <span class="tarif">sütsüz, suyla çırpılmış</span>
+        <span class="ad" lang="en">Chai Tea Latte</span>
+        <span class="fiyat"><b>210 ₺</b></span>
+        
       </li>
       </ul>
     </section>
@@ -331,35 +388,33 @@ body {
       </ul>
     </section>
 <section class="bolum">
-      <h2 class="bolum-basligi">KAHVESİZ</h2>
+      <h2 class="bolum-basligi">MATCHA &amp; UBE</h2>
       <ul class="urunler">
 <li class="urun">
-        <span class="ad">Demleme Çay</span>
-        <span class="fiyat"><b>70 ₺</b></span>
+        <span class="ad" lang="en">Matcha Latte</span>
+        <span class="fiyat"><b>230 ₺</b></span>
         
       </li>
 <li class="urun">
-        <span class="ad">Sıcak Çikolata</span>
-        <span class="fiyat"><b>210 ₺</b></span>
-        <span class="tarif">sütlü veya beyaz</span>
-      </li>
-<li class="urun">
-        <span class="ad">Salep</span>
-        <span class="fiyat"><b>210 ₺</b></span>
+        <span class="ad" lang="en">Ube Latte</span>
+        <span class="fiyat"><b>275 ₺</b></span>
         
       </li>
 <li class="urun">
-        <span class="ad" lang="en">Chai Tea Latte</span>
-        <span class="fiyat"><b>210 ₺</b></span>
-        
+        <span class="ad">Sade Matcha</span>
+        <span class="fiyat"><b>255 ₺</b></span>
+        <span class="tarif">sütsüz, suyla çırpılmış</span>
       </li>
       </ul>
     </section>
+<div class="aroma-vitrin" aria-hidden="true">
+      <div class="aroma-kutu"><img src="aroma/vanilya.png" data-aroma="vanilya" alt=""><img src="aroma/karamel.png" data-aroma="karamel" alt=""><img src="aroma/tuzlu-karamel.png" data-aroma="tuzlu-karamel" alt=""><img src="aroma/toffee-nut.png" data-aroma="toffee-nut" alt=""><img src="aroma/cookie.png" data-aroma="cookie" alt=""><img src="aroma/oreo.png" data-aroma="oreo" alt=""><img src="aroma/cheesecake.png" data-aroma="cheesecake" alt=""><img src="aroma/cilek.png" data-aroma="cilek" alt=""><img src="aroma/hindistan-cevizi.png" data-aroma="hindistan-cevizi" alt=""><img src="aroma/balkabagi.png" data-aroma="balkabagi" alt=""><img src="aroma/snickers.png" data-aroma="snickers" alt=""><img src="aroma/lotus.png" data-aroma="lotus" alt=""><img src="aroma/tiramisu.png" data-aroma="tiramisu" alt=""><img src="aroma/coco-star.png" data-aroma="coco-star" alt=""></div>
+    </div>
 </div>
 </main>
 <footer class="kur-bandi">
       <p class="kur-bilgi"><span>Latte · Matcha · Ube · Milkshake</span><span class="kur-fark">+25 ₺</span></p>
-      <div class="serit"><ul class="serit-ray"><li>Vanilya</li><li>Karamel</li><li>Tuzlu Karamel</li><li>Toffee Nut</li><li>Cookie</li><li>Oreo</li><li>Cheesecake</li><li>Probis</li><li>Irish</li><li>Çilek</li><li>Hindistan Cevizi</li><li>Balkabağı</li><li>Snickers</li><li>Danone</li><li>Lotus</li><li>Tiramisu</li><li>Coco Star</li></ul><ul class="serit-ray" aria-hidden="true"><li>Vanilya</li><li>Karamel</li><li>Tuzlu Karamel</li><li>Toffee Nut</li><li>Cookie</li><li>Oreo</li><li>Cheesecake</li><li>Probis</li><li>Irish</li><li>Çilek</li><li>Hindistan Cevizi</li><li>Balkabağı</li><li>Snickers</li><li>Danone</li><li>Lotus</li><li>Tiramisu</li><li>Coco Star</li></ul></div>
+      <div class="serit"><ul class="serit-ray"><li data-aroma="vanilya"><span>Vanilya</span></li><li data-aroma="karamel"><span>Karamel</span></li><li data-aroma="tuzlu-karamel"><span>Tuzlu Karamel</span></li><li data-aroma="toffee-nut"><span>Toffee Nut</span></li><li data-aroma="cookie"><span>Cookie</span></li><li data-aroma="oreo"><span>Oreo</span></li><li data-aroma="cheesecake"><span>Cheesecake</span></li><li data-aroma="cilek"><span>Çilek</span></li><li data-aroma="hindistan-cevizi"><span>Hindistan Cevizi</span></li><li data-aroma="balkabagi"><span>Balkabağı</span></li><li data-aroma="snickers"><span>Snickers</span></li><li data-aroma="lotus"><span>Lotus</span></li><li data-aroma="tiramisu"><span>Tiramisu</span></li><li data-aroma="coco-star"><span>Coco Star</span></li></ul><ul class="serit-ray" aria-hidden="true"><li data-aroma="vanilya"><span>Vanilya</span></li><li data-aroma="karamel"><span>Karamel</span></li><li data-aroma="tuzlu-karamel"><span>Tuzlu Karamel</span></li><li data-aroma="toffee-nut"><span>Toffee Nut</span></li><li data-aroma="cookie"><span>Cookie</span></li><li data-aroma="oreo"><span>Oreo</span></li><li data-aroma="cheesecake"><span>Cheesecake</span></li><li data-aroma="cilek"><span>Çilek</span></li><li data-aroma="hindistan-cevizi"><span>Hindistan Cevizi</span></li><li data-aroma="balkabagi"><span>Balkabağı</span></li><li data-aroma="snickers"><span>Snickers</span></li><li data-aroma="lotus"><span>Lotus</span></li><li data-aroma="tiramisu"><span>Tiramisu</span></li><li data-aroma="coco-star"><span>Coco Star</span></li></ul></div>
     </footer>
 <script>
 function poipuMevsimIcinde(simdi, baslangic, bitis) {
@@ -397,6 +452,40 @@ function poipuMevsimIcinde(simdi, baslangic, bitis) {
   for (var i = 0; i < raylar.length; i++) {
     raylar[i].style.animationDelay = '-' + faz.toFixed(3) + 's';
   }
+})();
+(function () {
+  var vitrin = document.querySelector('.aroma-vitrin');
+  var serit = document.querySelector('.serit');
+  if (!vitrin || !serit) { return; }
+  var kutu = vitrin.querySelector('.aroma-kutu');
+  if (!kutu) { return; }
+  var imgler = kutu.querySelectorAll('img[data-aroma]');
+  if (!imgler.length) { return; }
+  var gorseller = {};
+  for (var i = 0; i < imgler.length; i++) {
+    gorseller[imgler[i].getAttribute('data-aroma')] = imgler[i];
+  }
+  var acik = null;
+  var vurgulu = null;
+  function bak() {
+    var k = kutu.getBoundingClientRect();
+    var s = serit.getBoundingClientRect();
+    var hedef = document.elementFromPoint(k.left + k.width / 2, s.top + s.height / 2);
+    var li = hedef && hedef.closest ? hedef.closest('li[data-aroma]') : null;
+    if (!li) { return; }
+    if (li !== vurgulu) {
+      if (vurgulu) { vurgulu.classList.remove('vurgulu'); }
+      li.classList.add('vurgulu');
+      vurgulu = li;
+    }
+    var slug = li.getAttribute('data-aroma');
+    if (slug === acik) { return; }
+    if (acik && gorseller[acik]) { gorseller[acik].classList.remove('acik'); }
+    if (gorseller[slug]) { gorseller[slug].classList.add('acik'); }
+    acik = slug;
+  }
+  bak();
+  setInterval(bak, 100);
 })();
 </script>
 </body>
