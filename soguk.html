@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="tr" data-ekran="soguk" data-taraf="sol">
+<html data-kis-ekran="sol" lang="tr" data-ekran="soguk" data-taraf="sağ">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -282,265 +282,45 @@ body {
   box-shadow: 0 0 0 0.42vw var(--acik);
 }
 .serit-ray li.vurgulu > span::before { height: 1.9vh; }
-.ekran { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-body { position: relative; }
-.k-ust {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 10;
-}
-.k-sahne {
-  position: relative;
-  flex: 1 1 auto;
-  min-height: 0;
-  overflow: hidden;
-}
-.k-film {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 88.2%;
-  opacity: 0;
-  background: var(--acik);
-}
-.k-tam {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-}
-.k-film img,
-.k-film video,
-.k-tam img,
-.k-tam video {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.k-kare { visibility: hidden; }
-.k-kare.k-acik { visibility: visible; }
-.k-video { opacity: 0; }
-.k-video.k-canli { opacity: 1; }
-.k-bantlar {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
-.k-bant {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 0;
-}
-.k-bant > b {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--bordo);
-  transform: translateX(101%);
-}
-.k-tam-bantlar .k-bant > b { transform: translateX(-101%); }
-.k-uyanis {
-  position: absolute;
-  left: 0;
-  top: 0;
-  overflow: hidden;
-}
-.k-pencere {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background: var(--bordo);
-  transform: translateX(101%);
-}
-.k-satir {
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--acik);
-}
-.k-satir.k-sinir { border-top: 0.1vh solid transparent; }
-.k-satir .ad { position: relative; }
-.k-gezgin {
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-}
-.k-zemin {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--bordo);
-  transform-origin: 0 50%;
-}
-.k-adkok,
-.k-fiyatic { display: inline-block; }
-.k-maske {
-  position: absolute;
-  left: 0;
-  top: 0;
-  overflow: hidden;
-  white-space: nowrap;
-}
-.k-maske > span { display: inline-block; transform: translateY(110%); }
-.k-fiyatm {
-  display: inline-block;
-  overflow: hidden;
-  vertical-align: top;
-  padding: 0.14em 0;
-  margin: -0.14em 0;
-}
-.k-etiket {
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-}
-.k-buyuk {
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--acik);
-  font-weight: 700;
-  line-height: 1;
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-}
-.k-rk {
-  display: inline-block;
-  overflow: hidden;
-  vertical-align: top;
-}
-.k-rk > span { display: inline-block; transform: translateY(104%); }
-.k-pano { position: absolute; left: 0; top: 0; }
-.k-ps {
-  position: absolute;
-  left: 0;
-  top: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  color: var(--acik);
-  font-weight: 700;
-  letter-spacing: -0.022em;
-}
-.k-ps.k-ince { font-weight: 400; letter-spacing: -0.012em; }
-.k-ps > span { display: inline-block; transform: translateY(105%); }
-.k-cizgi {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 0.22vh;
-  background: var(--acik);
-  transform-origin: 0 50%;
-  transform: scaleX(0);
-}
-.k-gezgin .ad { overflow: hidden; }
-.k-yedek { display: none; }
-html.k-sabit .k-yedek { display: block; }
-html.k-sabit .k-ust,
-html.k-sabit .k-film,
-html.k-sabit .k-bantlar { display: none; }
-.k-yedek {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
-.k-yedek img {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 88.2%;
-  object-fit: cover;
-  display: block;
-}
-.k-yedek-kunye {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 11.8%;
-  background: var(--bordo);
-  color: var(--acik);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1.8vw;
-  font-size: var(--urun-boyut);
-  line-height: 1.08;
-}
-.k-yedek-kunye .fiyat { font-size: 6vh; line-height: 1; }
 </style>
-<noscript><style>
-.k-yedek{display:block}.k-ust,.k-film,.k-bantlar{display:none}
-</style></noscript>
+<style id="kis-stil">
+:root { --bordo: #000000; --cizgi: rgba(0, 0, 0, 0.16); --cizgi-ters: rgba(248, 220, 190, 0.30); }
+.kur-bilgi, .serit { background: #44240F; color: #F8DCBE; }
+.kis-wordmark { display: inline-flex; align-items: flex-end; margin: 0; line-height: 1; }
+.kis-wordmark svg { height: 3.9vh; width: auto; display: block; }
+li.urun { position: relative; isolation: isolate; transition: color .5s ease; }
+li.urun::before { content: ""; position: absolute; z-index: -1; left: -0.9vw; right: -0.9vw; top: -0.35vh; bottom: -0.35vh;
+  background: #44240F; border-radius: 0.6vh; opacity: 0; transition: opacity .5s ease; }
+li.urun.kis-yanik { color: #F8DCBE; }
+li.urun.kis-yanik::before { opacity: 1; }
+li.urun.kis-yanik .tarif { color: #F8DCBE; }
+.kis-pencere { position: fixed; left: 52.2495vw; top: 11.3139vh; width: 42.7505vw; height: 83.6861vh; }
+.kis-pencere-kare { position: absolute; left: 0; top: 0; right: 0; height: 88.2%; overflow: hidden;
+  border-radius: 0.9vh; background: #EDE5DA; }
+.kis-pencere-kare img, .kis-pencere-kunye span { position: absolute; opacity: 0; transition: opacity .8s ease; }
+.kis-pencere-kare img { left: 0; top: 0; width: 100%; height: 100%; display: block; }
+.kis-pencere-kunye { position: absolute; left: 0; right: 0; bottom: 0; height: 11.8%; }
+.kis-pencere-kunye span { left: 0; top: 50%; margin-top: -0.6em; line-height: 1.2; font-size: var(--urun-boyut);
+  font-weight: 500; color: #000000; white-space: nowrap; }
+.kis-pencere .acik { opacity: 1; }
+.kis-film { position: fixed; left: 0; top: 0; width: 100vw; height: 100vh; z-index: 50; opacity: 0;
+  transition: opacity .5s ease; background: #000; pointer-events: none; }
+.kis-film.acik { opacity: 1; }
+.kis-film video { position: absolute; left: 0; top: 0; width: 100%; height: 100%; display: block; }
+.kis-ad { position: absolute; font-size: 5.2vh; font-weight: 500; letter-spacing: -0.01em; line-height: 1;
+  white-space: nowrap; opacity: 0; transition: opacity .6s ease; }
+.kis-ad.siyah { color: #000000; }
+.kis-ad.bej { color: #F8DCBE; }
+.kis-ad.kutu { color: #F8DCBE; background: #44240F; padding: 1.4vh 1.2vw; border-radius: 0.6vh; }
+.kis-film.ad-acik .kis-ad { opacity: 1; }
+</style>
 </head>
 <body>
 <header class="ekran-basligi">
-<h1 lang="en">Poipu</h1><span class="ekran-altbaslik" lang="en">signature &amp; cold</span>
+<h1 class="kis-wordmark"><svg role="img" aria-label="Poipu" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="378.2891 1072.3047 459.4453 156.1523"><path fill-rule="evenodd" fill="#000000" d="M 412.820312 1085.996094 C 455.648438 1076.976562 457.21875 1124.15625 439.953125 1137.335938 C 432.328125 1143.117188 423.582031 1142.65625 412.820312 1140.804688 Z M 438.382812 1148.4375 C 439.503906 1147.976562 445.109375 1147.28125 447.128906 1146.585938 C 450.265625 1145.664062 452.507812 1144.738281 455.199219 1143.347656 C 459.910156 1140.804688 465.515625 1136.644531 467.757812 1132.710938 C 474.484375 1124.847656 476.277344 1108.429688 471.34375 1097.789062 C 467.085938 1088.769531 458.113281 1082.0625 445.558594 1079.519531 C 435.917969 1077.207031 391.519531 1078.363281 378.289062 1078.59375 L 378.289062 1083.453125 C 383.671875 1083.914062 387.484375 1084.378906 389.277344 1089.003906 C 391.070312 1093.859375 389.949219 1160 390.171875 1170.40625 C 390.398438 1196.539062 385.914062 1186.828125 378.289062 1191.453125 L 378.289062 1195.382812 L 425.378906 1195.382812 L 425.378906 1190.988281 C 413.941406 1189.601562 413.042969 1186.828125 412.820312 1175.496094 C 412.820312 1166.246094 412.820312 1156.761719 412.820312 1147.511719 C 422.460938 1148.898438 428.515625 1149.363281 438.382812 1148.4375 "/><path fill-rule="evenodd" fill="#000000" d="M 547.359375 1129.472656 C 550.050781 1132.25 552.292969 1146.355469 552.515625 1151.675781 C 554.980469 1194.460938 524.488281 1196.773438 515.070312 1183.820312 C 504.082031 1169.019531 500.046875 1140.804688 511.257812 1123.230469 C 514.84375 1117.679688 520.003906 1113.980469 527.625 1113.980469 C 537.269531 1113.980469 544.441406 1121.148438 547.359375 1129.472656 Z M 488.386719 1129.011719 L 485.472656 1135.488281 C 478.519531 1152.832031 482.332031 1170.640625 492.199219 1182.203125 L 496.234375 1186.828125 C 500.496094 1188.214844 508.789062 1198.390625 529.867188 1197.695312 C 571.800781 1196.773438 585.027344 1151.90625 568.660156 1127.625 C 567.539062 1125.542969 564.398438 1122.304688 563.949219 1120.917969 C 561.484375 1119.296875 561.261719 1118.140625 555.878906 1114.441406 L 552.964844 1112.359375 C 551.171875 1112.128906 548.03125 1110.277344 545.789062 1109.585938 C 523.265625 1102.25 501.136719 1110.226562 488.386719 1129.011719 "/><path fill-rule="evenodd" fill="#000000" d="M 593.152344 1115.59375 C 593.230469 1115.527344 593.300781 1115.472656 593.359375 1115.425781 C 593.300781 1115.472656 593.234375 1115.527344 593.152344 1115.59375 Z M 593.566406 1115.253906 C 593.644531 1115.191406 593.691406 1115.15625 593.734375 1115.117188 C 593.691406 1115.15625 593.644531 1115.191406 593.566406 1115.253906 Z M 593.734375 1115.113281 C 593.746094 1115.105469 593.753906 1115.097656 593.761719 1115.089844 C 593.753906 1115.097656 593.746094 1115.105469 593.734375 1115.113281 Z M 585.476562 1113.980469 L 585.476562 1117.449219 C 588.390625 1119.066406 591.753906 1118.140625 593.773438 1120.6875 C 595.566406 1123 595.792969 1127.160156 595.792969 1130.628906 L 595.792969 1177.808594 C 595.792969 1181.046875 596.015625 1185.441406 594.222656 1187.984375 C 591.980469 1191.453125 589.289062 1189.835938 585.703125 1191.453125 L 585.476562 1195.382812 L 628.082031 1195.617188 L 628.082031 1190.757812 C 618.886719 1190.066406 617.09375 1188.214844 617.09375 1178.964844 C 616.871094 1170.871094 617.09375 1163.007812 617.09375 1154.914062 C 617.09375 1139.878906 617.765625 1122.765625 616.871094 1107.964844 Z M 585.476562 1113.980469 "/><path fill-rule="evenodd" fill="#000000" d="M 601.847656 1072.304688 C 608.46875 1072.304688 613.835938 1077.675781 613.835938 1084.296875 C 613.835938 1090.917969 608.46875 1096.285156 601.847656 1096.285156 C 595.222656 1096.285156 589.855469 1090.917969 589.855469 1084.296875 C 589.855469 1077.675781 595.222656 1072.304688 601.847656 1072.304688 "/><path fill-rule="evenodd" fill="#000000" d="M 708.578125 1162.3125 C 707.234375 1171.101562 704.992188 1176.652344 700.730469 1182.203125 C 697.367188 1186.828125 689.296875 1191.222656 680.328125 1188.675781 C 676.515625 1187.519531 674.273438 1185.671875 672.03125 1183.359375 C 668.667969 1179.890625 667.546875 1180.582031 667.546875 1173.875 L 667.546875 1132.25 C 667.546875 1129.9375 668.21875 1128.546875 669.339844 1127.390625 C 688.175781 1107.503906 714.410156 1126.234375 708.578125 1162.3125 Z M 671.355469 1222.90625 L 668.21875 1219.898438 C 668.21875 1215.503906 667.546875 1210.183594 667.546875 1205.097656 C 667.546875 1199.777344 667.546875 1194.460938 667.546875 1189.140625 C 670.011719 1190.296875 672.476562 1192.378906 675.617188 1193.996094 C 678.757812 1195.617188 681.222656 1196.539062 685.035156 1197.003906 C 720.910156 1201.859375 744.007812 1153.988281 724.949219 1124.15625 C 721.136719 1117.910156 718.894531 1115.136719 712.167969 1111.203125 C 704.09375 1106.117188 696.917969 1107.734375 691.089844 1107.039062 C 688.398438 1109.121094 685.257812 1107.734375 677.1875 1113.285156 C 670.234375 1117.910156 670.234375 1119.992188 666.871094 1122.535156 C 666.871094 1117.910156 667.097656 1112.359375 665.527344 1107.964844 C 658.800781 1108.195312 643.328125 1112.359375 635.929688 1113.980469 C 635.929688 1118.605469 635.929688 1117.214844 637.273438 1118.140625 L 639.066406 1118.835938 C 648.484375 1117.214844 646.242188 1135.488281 646.242188 1142.425781 C 646.242188 1152.136719 646.917969 1213.886719 645.570312 1218.511719 C 643.777344 1224.753906 639.066406 1222.441406 635.929688 1224.292969 L 635.929688 1227.066406 C 638.84375 1228.457031 672.703125 1227.992188 678.53125 1227.53125 L 678.757812 1223.828125 Z M 671.355469 1222.90625 "/><path fill-rule="evenodd" fill="#000000" d="M 738.851562 1117.449219 C 740.195312 1118.371094 739.074219 1117.910156 741.09375 1118.371094 C 744.457031 1118.835938 744.90625 1118.140625 746.921875 1120.453125 C 753.425781 1127.625 744.007812 1171.796875 753.199219 1185.671875 C 758.359375 1193.765625 768 1199.546875 782.125 1197.003906 C 796.703125 1194.460938 802.308594 1183.820312 807.015625 1181.046875 C 807.015625 1188.214844 807.6875 1191.683594 810.378906 1197.003906 C 813.292969 1197.003906 835.71875 1191.914062 837.734375 1190.757812 L 837.734375 1187.519531 C 828.316406 1187.519531 826.972656 1185.207031 826.746094 1175.957031 C 826.523438 1168.558594 826.746094 1160.925781 826.746094 1153.292969 L 826.523438 1108.429688 C 822.9375 1107.039062 807.015625 1111.667969 800.289062 1112.824219 C 796.027344 1113.746094 794.90625 1113.054688 795.582031 1117.679688 C 799.167969 1118.605469 802.308594 1118.140625 804.101562 1120.917969 C 806.34375 1124.847656 805.445312 1149.59375 805.445312 1154.914062 C 805.445312 1159.074219 805.445312 1163.007812 805.445312 1166.9375 C 805.445312 1168.558594 805.671875 1171.796875 805.445312 1173.183594 C 804.996094 1175.957031 797.148438 1184.050781 787.730469 1184.746094 C 781.003906 1185.207031 774.949219 1182.203125 772.261719 1176.1875 C 769.34375 1169.25 770.464844 1139.878906 770.464844 1130.628906 C 770.464844 1124.386719 771.140625 1113.746094 770.242188 1107.964844 C 767.550781 1107.503906 741.539062 1112.824219 738.851562 1113.980469 Z M 738.851562 1117.449219 "/></svg></h1><span class="ekran-altbaslik" lang="en">cold &amp; desserts</span>
 </header>
 <main class="ekran">
 <div class="sutun">
-<section class="bolum hero basliksiz">
-      
-      <ul class="urunler">
-<li class="urun" data-icecek="tahin">
-        <span class="ad">Poipu Tahin</span>
-        <span class="fiyat"><b>235 ₺</b></span>
-        
-      </li>
-<li class="urun" data-icecek="antep">
-        <span class="ad">Poipu Antep</span>
-        <span class="fiyat"><b>245 ₺</b></span>
-        
-      </li>
-<li class="urun" data-mevsim-baslangic="09-01" data-mevsim-bitis="12-15" data-icecek="pumpkin">
-        <span class="ad" lang="en">Poipu Pumpkin</span>
-        <span class="fiyat"><b>235 ₺</b></span>
-        
-      </li>
-<li class="urun" data-icecek="hibiscus">
-        <span class="ad" lang="en">Poipu Hibiscus</span>
-        <span class="fiyat"><b>225 ₺</b></span>
-        
-      </li>
-<li class="urun" data-icecek="mango">
-        <span class="ad">Poipu Mango</span>
-        <span class="fiyat"><b>225 ₺</b></span>
-        
-      </li>
-<li class="urun" data-icecek="lime">
-        <span class="ad" lang="en">Poipu Lime</span>
-        <span class="fiyat"><b>225 ₺</b></span>
-        
-      </li>
-      </ul>
-    </section>
 <section class="bolum">
       <h2 class="bolum-basligi">SOĞUKLAR</h2>
       <ul class="urunler">
@@ -565,13 +345,33 @@ html.k-sabit .k-bantlar { display: none; }
         <span class="tarif">mango · çilek · limon · ananas · redmint</span>
       </li>
 <li class="urun">
-        <span class="ad">Taze Portakal Suyu</span>
-        <span class="fiyat"><b>190 ₺</b></span>
+        <span class="ad">Churchill</span>
+        <span class="fiyat"><b>210 ₺</b></span>
         
       </li>
 <li class="urun">
-        <span class="ad">Churchill</span>
-        <span class="fiyat"><b>210 ₺</b></span>
+        <span class="ad">Çernobil</span>
+        <span class="fiyat"><b>225 ₺</b></span>
+        
+      </li>
+<li class="urun">
+        <span class="ad" lang="en">Orange Mango</span>
+        <span class="fiyat"><b>225 ₺</b></span>
+        
+      </li>
+      </ul>
+    </section>
+<section class="bolum">
+      <h2 class="bolum-basligi">TATLILAR</h2>
+      <ul class="urunler">
+<li class="urun">
+        <span class="ad" lang="en">Spoonful</span>
+        <span class="fiyat"><b>200 ₺</b></span>
+        
+      </li>
+<li class="urun">
+        <span class="ad">San Sebastian</span>
+        <span class="fiyat"><b>300 ₺</b></span>
         
       </li>
       </ul>
@@ -579,34 +379,9 @@ html.k-sabit .k-bantlar { display: none; }
 </div>
 <div class="sutun">
 
-<div class="k-sahne" aria-hidden="true">
-  <div class="k-film"><img class="k-kare" data-urun="latte" data-an="ilk" src="kare/latte-ilk.jpg" alt=""><img class="k-kare" data-urun="latte" data-an="son" src="kare/latte-son.jpg" alt=""><img class="k-kare" data-urun="kupa" data-an="ilk" src="kare/kupa-ilk.jpg" alt=""><img class="k-kare" data-urun="kupa" data-an="son" src="kare/kupa-son.jpg" alt=""><img class="k-kare" data-urun="ube" data-an="ilk" src="kare/ube-ilk.jpg" alt=""><img class="k-kare" data-urun="ube" data-an="son" src="kare/ube-son.jpg" alt=""><img class="k-kare" data-urun="kase" data-an="ilk" src="kare/kase-ilk.jpg" alt=""><img class="k-kare" data-urun="kase" data-an="son" src="kare/kase-son.jpg" alt=""><img class="k-kare" data-urun="mocha" data-an="ilk" src="kare/mocha-ilk.jpg" alt=""><img class="k-kare" data-urun="mocha" data-an="son" src="kare/mocha-son.jpg" alt=""><video class="k-video" muted playsinline preload="auto"></video></div>
-  <div class="k-bantlar"><i class="k-bant"><b></b></i><i class="k-bant"><b></b></i><i class="k-bant"><b></b></i><i class="k-bant"><b></b></i><i class="k-bant"><b></b></i><i class="k-bant"><b></b></i><i class="k-bant"><b></b></i><i class="k-bant"><b></b></i><i class="k-bant"><b></b></i><i class="k-bant"><b></b></i><i class="k-bant"><b></b></i><i class="k-bant"><b></b></i><i class="k-bant"><b></b></i><i class="k-bant"><b></b></i><i class="k-bant"><b></b></i><i class="k-bant"><b></b></i><i class="k-bant"><b></b></i><i class="k-bant"><b></b></i></div>
-  <div class="k-yedek"><img src="kare/ube-son.jpg" alt=""><div class="k-yedek-kunye"><span class="ad" lang="en">Iced Ube Latte</span><span class="fiyat"><b>275 ₺</b></span></div></div>
-</div>
 </div>
 </main>
 
-<div class="k-ust" aria-hidden="true">
-<div class="k-gezgin" data-urun="americano"><div class="k-zemin"></div><div class="urun k-satir k-sinir"><span class="ad" lang="en"><span class="k-maske"><span class="k-iced">Iced&nbsp;</span></span><span class="k-adkok">Americano</span></span><span class="fiyat"><span class="k-fiyatm"><span class="k-fiyatic"><b>175 ₺</b></span></span></span></div></div>
-<div class="k-gezgin" data-urun="latte"><div class="k-zemin"></div><div class="urun k-satir"><span class="ad" lang="en"><span class="k-maske"><span class="k-iced">Iced&nbsp;</span></span><span class="k-adkok">Latte</span></span><span class="fiyat"><span class="k-fiyatm"><span class="k-fiyatic"><b>200 ₺</b></span></span></span></div></div>
-<div class="k-gezgin" data-urun="mocha"><div class="k-zemin"></div><div class="urun k-satir k-sinir"><span class="ad" lang="en"><span class="k-maske"><span class="k-iced">Iced&nbsp;</span></span><span class="k-adkok">Mocha</span></span><span class="fiyat"><span class="k-fiyatm"><span class="k-fiyatic"><b>235 ₺</b></span></span></span></div></div>
-<div class="k-gezgin" data-urun="matcha"><div class="k-zemin"></div><div class="urun k-satir"><span class="ad" lang="en"><span class="k-maske"><span class="k-iced">Iced&nbsp;</span></span><span class="k-adkok">Matcha Latte</span></span><span class="fiyat"><span class="k-fiyatm"><span class="k-fiyatic"><b>230 ₺</b></span></span></span></div></div>
-<div class="k-gezgin" data-urun="caramel"><div class="k-zemin"></div><div class="urun k-satir k-sinir"><span class="ad" lang="en"><span class="k-maske"><span class="k-iced">Iced&nbsp;</span></span><span class="k-adkok">Caramel Macchiato</span></span><span class="fiyat"><span class="k-fiyatm"><span class="k-fiyatic"><b>235 ₺</b></span></span></span></div></div>
-<div class="k-gezgin" data-urun="ube"><div class="k-zemin"></div><div class="urun k-satir k-sinir"><span class="ad" lang="en"><span class="k-maske"><span class="k-iced">Iced&nbsp;</span></span><span class="k-adkok">Ube Latte</span></span><span class="fiyat"><span class="k-fiyatm"><span class="k-fiyatic"><b>275 ₺</b></span></span></span></div></div>
-<div class="k-etiket" data-urun="spoonful"><div class="urun k-satir"><span class="ad" lang="en"><span class="k-fiyatm"><span class="k-fiyatic">Spoonful</span></span></span><span class="fiyat"><span class="k-fiyatm"><span class="k-fiyatic"><b>200 ₺</b></span></span></span></div></div>
-<div class="k-buyuk" data-urun="americano"><span class="k-rk"><span>1</span></span><span class="k-rk"><span>7</span></span><span class="k-rk"><span>5 </span></span><span class="k-rk"><span>₺</span></span></div>
-<div class="k-buyuk" data-urun="latte"><span class="k-rk"><span>2</span></span><span class="k-rk"><span>0</span></span><span class="k-rk"><span>0 </span></span><span class="k-rk"><span>₺</span></span></div>
-<div class="k-buyuk" data-urun="mocha"><span class="k-rk"><span>2</span></span><span class="k-rk"><span>3</span></span><span class="k-rk"><span>5 </span></span><span class="k-rk"><span>₺</span></span></div>
-<div class="k-buyuk" data-urun="matcha"><span class="k-rk"><span>2</span></span><span class="k-rk"><span>3</span></span><span class="k-rk"><span>0 </span></span><span class="k-rk"><span>₺</span></span></div>
-<div class="k-buyuk" data-urun="caramel"><span class="k-rk"><span>2</span></span><span class="k-rk"><span>3</span></span><span class="k-rk"><span>5 </span></span><span class="k-rk"><span>₺</span></span></div>
-<div class="k-buyuk" data-urun="ube"><span class="k-rk"><span>2</span></span><span class="k-rk"><span>7</span></span><span class="k-rk"><span>5 </span></span><span class="k-rk"><span>₺</span></span></div>
-<div class="k-buyuk" data-urun="spoonful"><span class="k-rk"><span>2</span></span><span class="k-rk"><span>0</span></span><span class="k-rk"><span>0 </span></span><span class="k-rk"><span>₺</span></span></div>
-<div class="k-pano" data-urun="matcha"><span class="k-ps k-ince" lang="en"><span>Iced</span></span><span class="k-ps" lang="en"><span>Matcha</span></span><span class="k-ps" lang="en"><span>Latte</span></span></div>
-<div class="k-pano" data-urun="americano"><span class="k-ps k-ince" lang="en"><span>Iced</span></span><span class="k-ps" lang="en"><span>Americano</span></span></div>
-<div class="k-pano" data-urun="caramel"><span class="k-ps k-ince" lang="en"><span>Iced</span></span><span class="k-ps" lang="en"><span>Caramel</span></span><span class="k-ps" lang="en"><span>Macchiato</span></span></div>
-<i class="k-cizgi"></i>
-</div>
 <script>
 function poipuMevsimIcinde(simdi, baslangic, bitis) {
   if (baslangic <= bitis) {
@@ -679,615 +454,92 @@ function poipuMevsimIcinde(simdi, baslangic, bitis) {
   setInterval(bak, 100);
 })();
 </script>
-<script>
-function kinetikKur(kok, A, sec) {
-  var EKRAN = sec.ekran;
-  var capa = sec.capa || 0;
-  var DONDUR = (sec.dondur === null || sec.dondur === undefined) ? null : sec.dondur;
-  var DONGU = A.dongu * 1000;
-  var zt = kok.ownerDocument.timeline;
-  function simdi() { return DONDUR !== null ? capa + DONDUR * 1000 : Date.now() + (sec.kaydir || 0); }
-  function q(s) { return kok.querySelector(s); }
-  function qa(s) { return Array.prototype.slice.call(kok.querySelectorAll(s)); }
-  function sinirla(v, a, b) { return Math.min(b, Math.max(a, v)); }
-  var EGRI = {
-    bant: 'cubic-bezier(0.76, 0, 0.24, 1)',
-    yol: 'cubic-bezier(0.62, 0, 0.2, 1)',
-    uyan: 'cubic-bezier(0.65, 0, 0.35, 1)',
-    cik: 'cubic-bezier(0.16, 1, 0.3, 1)',
-    gir: 'cubic-bezier(0.7, 0, 0.84, 0)',
-    kay: 'cubic-bezier(0.65, 0, 0.25, 1)'
-  };
-  var Z = A.zaman;
-  var O = null;
-  function kutu(el) {
-    var k = kok.getBoundingClientRect(), r = el.getBoundingClientRect();
-    var s = (k.width / kok.offsetWidth) || 1;
-    return { x: (r.left - k.left) / s, y: (r.top - k.top) / s, w: r.width / s, h: r.height / s };
-  }
-  function ofs(el, ata) {
-    var x = 0, y = 0;
-    while (el && el !== ata) { x += el.offsetLeft; y += el.offsetTop; el = el.offsetParent; }
-    return { x: x, y: y };
-  }
-  function px(el, ad, v) { el.style[ad] = v.toFixed(2) + 'px'; }
-  function yuvarla(v) { return Math.round(v); }
-  function bantSiniri(sinirlar) {
-    var b = [];
-    for (var i = 0; i < sinirlar.length; i++) {
-      var v = yuvarla(sinirlar[i]);
-      if (!b.length || v - b[b.length - 1] >= 4) { b.push(v); }
-    }
-    return b;
-  }
-  function olc() {
-    var W = kok.offsetWidth, H = kok.offsetHeight;
-    var vw = W / 100, vh = H / 100;
-    var o = { W: W, H: H, vw: vw, vh: vh, ins: A.ins * vw, ara: A.ara * vw };
-    o.off = EKRAN === 'sicak' ? W + o.ara : 0;
-    o.fs = A.satirPunto * vh;
-    var S = A.sahne;
-    o.sahne = { x: S.x * W, y: S.y * H, w: S.w * W, h: S.h * H, alt: S.alt * H };
-    o.satir = {};
-    for (var ad in A.satir) {
-      var r = A.satir[ad];
-      o.satir[ad] = { x: r.x * W, y: r.y * H, w: r.w * W, h: r.h * H, hli: r.hli * H };
-    }
-    if (EKRAN === 'soguk') {
-      var sahne = q('.k-sahne');
-      var sk = kutu(sahne);
-      o.sahne.x = sk.x; o.sahne.y = sk.y; o.sahne.w = sk.w; o.sahne.h = sk.h;
-      var sol = q('.ekran .sutun');
-      var lis = Array.prototype.slice.call(sol.querySelectorAll('li.urun')).filter(function (li) { return !li.hidden; });
-      var hero = sol.querySelector('.bolum.hero');
-      var hk = hero ? kutu(hero) : null;
-      var sn = [sk.y];
-      var heroLi = hero ? hero.querySelectorAll('li.urun') : [];
-      for (var i = 0; i < lis.length; i++) {
-        var lk = kutu(lis[i]);
-        var heroIci = hero && hero.contains(lis[i]);
-        if (i > 0 && heroIci) { sn.push(lk.y); }
-        if (!heroIci) {
-          if (hk && sn[sn.length - 1] < hk.y + hk.h - 1) { sn.push(hk.y + hk.h); }
-          sn.push(lk.y);
-        }
-      }
-      var son = kutu(lis[lis.length - 1]);
-      o.altUst = son.y + son.h;
-      sn.push(o.altUst);
-      sn.push(sk.y + sk.h);
-      o.bantlar = bantSiniri(sn).map(function (v) { return v - yuvarla(sk.y); });
-      o.altBant = o.bantlar.length - 2;
-      var ilkLi = hero ? heroLi[0] : lis[0];
-      o.ilkTaban = kutu(ilkLi.querySelector('.ad')).y + 0.9033 * o.fs;
-      o.heroTaban = [];
-      for (var hi = 0; hi < heroLi.length; hi++) { if (!heroLi[hi].hidden) { o.heroTaban.push(kutu(heroLi[hi].querySelector('.ad')).y + 0.9033 * o.fs); } }
-      var bb = sol.querySelector('h2.bolum-basligi');
-      o.bolumCizgi = bb ? kutu(bb).y + kutu(bb).h : o.ilkTaban;
-      o.ikinciSatir = kutu(hero ? heroLi[1] : lis[1]);
-      o.sonTaban = kutu(lis[lis.length - 1].querySelector('.ad')).y + 0.9033 * o.fs;
-      o.sahne.alt = o.altUst - sk.y;
-    } else {
-      var lisS = qa('.ekran li.urun');
-      var sag = qa('.ekran .sutun')[1];
-      var sagLi = Array.prototype.slice.call(sag.querySelectorAll('li.urun'));
-      var sn2 = [0, kutu(q('.ekran-basligi')).y + kutu(q('.ekran-basligi')).h];
-      for (var j = 0; j < sagLi.length; j++) { sn2.push(kutu(sagLi[j]).y); }
-      var sonS = kutu(sagLi[sagLi.length - 1]);
-      sn2.push(sonS.y + sonS.h);
-      var sonL = kutu(lisS.filter(function (li) { return !sag.contains(li); }).pop());
-      sn2.push(sonL.y + sonL.h);
-      var kb = q('.kur-bilgi'), se = q('.serit');
-      var kbu = kb ? kutu(kb).y : H;
-      var bosluk = kbu - (sonL.y + sonL.h);
-      if (bosluk > 2 * o.fs * 2.1) { sn2.push(sonL.y + sonL.h + bosluk / 2); }
-      if (kb) { sn2.push(kbu); }
-      if (se) { sn2.push(kutu(se).y); }
-      sn2.push(H);
-      o.bantlar = bantSiniri(sn2);
-    }
-    return o;
-  }
-  var bantEl = qa(EKRAN === 'soguk' ? '.k-sahne .k-bant' : '.k-tam-bantlar .k-bant');
-  function yerlestir() {
-    O = olc();
-    var n = O.bantlar.length - 1;
-    for (var i = 0; i < bantEl.length; i++) {
-      var el = bantEl[i];
-      if (i < n) {
-        el.style.top = O.bantlar[i] + 'px';
-        el.style.height = (O.bantlar[i + 1] - O.bantlar[i]) + 'px';
-        el.style.display = '';
-      } else { el.style.display = 'none'; }
-    }
-    O.nBant = Math.min(n, bantEl.length);
-    if (EKRAN === 'soguk') {
-      px(q('.k-film'), 'height', O.sahne.alt);
-    }
-    qa('.k-uyanis').forEach(function (u) {
-      var r = O.satir[u.getAttribute('data-urun')];
-      var li = kok.querySelector('.ekran li.urun[data-k-urun="' + u.getAttribute('data-urun') + '"]');
-      var lk = li ? kutu(li) : { x: r.x, y: r.y, w: r.w, h: r.hli };
-      px(u, 'left', lk.x - O.ins); px(u, 'top', lk.y); px(u, 'width', lk.w + 2 * O.ins); px(u, 'height', lk.h);
-      var s = u.querySelector('.k-satir');
-      px(s, 'left', O.ins); px(s, 'width', lk.w);
-      u.kGen = lk.w + 2 * O.ins;
-    });
-    qa('.k-gezgin').forEach(function (g) {
-      var r = O.satir[g.getAttribute('data-urun')];
-      px(g, 'width', r.w + 2 * O.ins); px(g, 'height', r.h);
-      var s = g.querySelector('.k-satir');
-      px(s, 'left', O.ins); px(s, 'width', r.w);
-      var ic = g.querySelector('.k-iced');
-      g.kIced = ic ? ic.offsetWidth : 0;
-      var ad = g.querySelector('.ad');
-      g.kTaban = ofs(ad, g).y + 0.9033 * O.fs;
-      var im = g.querySelector('.k-maske');
-      if (im) { px(im, 'height', ad.offsetHeight); }
-    });
-    if (EKRAN === 'soguk' && O.heroTaban && O.heroTaban.length >= 6) {
-      var adim = O.heroTaban[2] - O.heroTaban[0];
-      var pfs = A.panoPunto * O.vh;
-      var tabanOfs = (adim - 1.2109 * pfs) / 2 + 0.96875 * pfs;
-      qa('.k-pano').forEach(function (pn) {
-        var sat = Array.prototype.slice.call(pn.querySelectorAll('.k-ps'));
-        for (var si = 0; si < sat.length; si++) {
-          var ps = sat[si];
-          ps.style.fontSize = pfs.toFixed(2) + 'px';
-          ps.style.lineHeight = adim.toFixed(2) + 'px';
-          px(ps, 'height', adim);
-          px(ps, 'left', O.sahne.x + O.ins - A.panoOptik * pfs);
-          px(ps, 'top', O.heroTaban[1 + 2 * si] - tabanOfs);
-        }
-      });
-      var cz = q('.k-cizgi');
-      if (cz) { px(cz, 'left', O.sahne.x + O.ins); px(cz, 'width', O.sahne.w - 2 * O.ins); px(cz, 'top', O.bolumCizgi - cz.offsetHeight); }
-    }
-    qa('.k-etiket').forEach(function (e) {
-      px(e, 'width', O.sahne.w); px(e, 'left', O.sahne.x);
-      var s = e.querySelector('.k-satir');
-      px(s, 'left', O.ins); px(s, 'width', O.sahne.w - 2 * O.ins);
-      var ad = e.querySelector('.ad');
-      e.kTaban = ofs(ad, e).y + 0.9033 * O.fs;
-    });
-  }
-  var urunler = A.urunler;
-  function yuvaBul(t) {
-    var faz = ((t - capa) % DONGU + DONGU) % DONGU;
-    var tur = t - faz;
-    var y = A.yuvalar;
-    for (var i = y.length - 1; i >= 0; i--) {
-      if (faz + 200 >= y[i].bas * 1000) { return { i: i, bas: tur + y[i].bas * 1000 }; }
-    }
-    var son = y[y.length - 1];
-    return { i: y.length - 1, bas: tur - DONGU + son.bas * 1000 };
-  }
-  var yonetilen = [];
-  var kurulan = null;
-  function temizle() {
-    for (var i = 0; i < yonetilen.length; i++) { yonetilen[i].a.cancel(); }
-    yonetilen = [];
-    kurulan = null;
-  }
-  function iz(el, kf, L, bas) {
-    if (!el) { return; }
-    var K = [];
-    for (var i = 0; i < kf.length; i++) {
-      var k = kf[i], o = {};
-      o.offset = sinirla(k[0] / L, 0, 1);
-      for (var p in k[1]) { o[p] = k[1][p]; }
-      o.easing = k[2] || 'linear';
-      if (K.length && o.offset < K[K.length - 1].offset) { o.offset = K[K.length - 1].offset; }
-      K.push(o);
-    }
-    if (K[0].offset > 0) { var b = {}; for (var p1 in K[0]) { b[p1] = K[0][p1]; } b.offset = 0; b.easing = 'linear'; K.unshift(b); }
-    if (K[K.length - 1].offset < 1) { var s = {}; for (var p2 in K[K.length - 1]) { s[p2] = K[K.length - 1][p2]; } s.offset = 1; K.push(s); }
-    var a = el.animate(K, { duration: L * 1000, fill: 'both' });
-    a.pause();
-    yonetilen.push({ a: a, bas: bas });
-  }
-  function zamanla() {
-    var t = simdi();
-    for (var i = 0; i < yonetilen.length; i++) {
-      var y = yonetilen[i];
-      if (DONDUR !== null) { y.a.currentTime = Math.max(0, t - y.bas); }
-      else { y.a.startTime = zt.currentTime + (y.bas - t); }
-    }
-  }
-  function tx(x, y) { return 'translate(' + x.toFixed(2) + 'px,' + y.toFixed(2) + 'px)'; }
-  function txx(x) { return 'translateX(' + x.toFixed(2) + 'px)'; }
-  function tyy(p) { return 'translateY(' + p + '%)'; }
-  var ESIK = 0.001;
-  function bantKur(L, bas, plan) {
-    for (var i = 0; i < O.nBant; i++) {
-      var kf = [];
-      var gecis = plan(i);
-      var k0 = gecis[0];
-      kf.push([0, { transform: 'translateX(' + k0[1] + '%)' }]);
-      for (var j = 1; j < gecis.length; j++) {
-        var g = gecis[j];
-        kf.push([g[0], { transform: 'translateX(' + gecis[j - 1][1] + '%)' }, EGRI.bant]);
-        kf.push([g[0] + Z.bant, { transform: 'translateX(' + g[1] + '%)' }]);
-      }
-      iz(bantEl[i].firstElementChild || bantEl[i].firstChild, kf, L, bas);
-    }
-  }
-  function ripple(baslangic, merkez, i) { return baslangic + Z.kademe * Math.abs(i - merkez); }
-  function bantIndeksi(y) {
-    for (var i = 0; i < O.nBant; i++) { if (y < O.bantlar[i + 1]) { return i; } }
-    return O.nBant - 1;
-  }
-  function yuvaKur(yi, bas) {
-    temizle();
-    kurulan = bas;
-    var Y = A.yuvalar[yi];
-    var U = urunler[Y.urun];
-    var L = Y.L;
-    var T = Y.t;
-    if (Y.tur === 'S') { return tatliKur(Y, U, L, T, bas); }
-    var r = O.satir[Y.urun];
-    var gez = q('.k-gezgin[data-urun="' + Y.urun + '"]');
-    var sk = O.sahne;
-    var xs = (O.W + O.ara) + r.x - O.ins, xk = sk.x, yr = r.y;
-    var oran = r.w / (r.w + 2 * O.ins);
-    var kaydirFiyat = -2 * O.ins;
-    var yc = (EKRAN === 'soguk' && Y.tur === 'D') ? alttaTaban() - gez.kTaban : yr;
-    var o = O.off;
-    var kf = [
-      [0, { transform: tx(xs - o, yr), opacity: 0 }],
-      [T.gz - ESIK, { transform: tx(xs - o, yr), opacity: 0 }],
-      [T.gz, { transform: tx(xs - o, yr), opacity: 1 }, EGRI.yol],
-      [T.gz + T.g, { transform: tx(xk - o, yr), opacity: 1 }],
-      [T.ad, { transform: tx(xk - o, yr), opacity: 1 }, EGRI.kay],
-      [T.ad + Z.kayma, { transform: tx(xk - o, yc), opacity: 1 }],
-      [T.geri, { transform: tx(xk - o, yc), opacity: 1 }, EGRI.kay],
-      [T.geri + Z.kayma, { transform: tx(xk - o, yr), opacity: 1 }],
-      [T.don, { transform: tx(xk - o, yr), opacity: 1 }, EGRI.yol],
-      [T.don + T.g, { transform: tx(xs - o, yr), opacity: 1 }],
-      [T.don + T.g + ESIK, { transform: tx(xs - o, yr), opacity: 0 }]
-    ];
-    if (EKRAN === 'sicak') { kf = kf.filter(function (k) { return k[0] <= T.gz + T.g || k[0] >= T.don; }); }
-    iz(gez, kf, L, bas);
-    var zemin = gez.querySelector('.k-zemin');
-    var v1 = T.gz + T.g;
-    iz(zemin, [
-      [0, { transform: 'scaleX(1)', opacity: 1 }],
-      [v1 - Z.kenet, { transform: 'scaleX(1)', opacity: 1 }, EGRI.cik],
-      [v1, { transform: 'scaleX(' + oran.toFixed(5) + ')', opacity: 1 }],
-      [v1 + 0.04, { transform: 'scaleX(' + oran.toFixed(5) + ')', opacity: 1 }],
-      [v1 + 0.04 + ESIK, { transform: 'scaleX(' + oran.toFixed(5) + ')', opacity: 0 }],
-      [T.don - 0.04 - ESIK, { transform: 'scaleX(' + oran.toFixed(5) + ')', opacity: 0 }],
-      [T.don - 0.04, { transform: 'scaleX(' + oran.toFixed(5) + ')', opacity: 1 }],
-      [T.don, { transform: 'scaleX(' + oran.toFixed(5) + ')', opacity: 1 }, EGRI.gir],
-      [T.don + Z.kenet, { transform: 'scaleX(1)', opacity: 1 }]
-    ], L, bas);
-    var fiyatKutu = gez.querySelector('.fiyat');
-    iz(fiyatKutu, [
-      [0, { transform: txx(0) }],
-      [v1 - Z.kenet, { transform: txx(0) }, EGRI.cik],
-      [v1, { transform: txx(kaydirFiyat) }],
-      [T.don, { transform: txx(kaydirFiyat) }, EGRI.gir],
-      [T.don + Z.kenet, { transform: txx(0) }]
-    ], L, bas);
-    var iced = gez.querySelector('.k-iced'), adkok = gez.querySelector('.k-adkok');
-    iz(iced, [
-      [0, { transform: tyy(110) }],
-      [T.iced, { transform: tyy(110) }, EGRI.cik],
-      [T.iced + Z.yazi, { transform: tyy(0) }],
-      [T.icedGeri, { transform: tyy(0) }, EGRI.gir],
-      [T.icedGeri + Z.yaziCik, { transform: tyy(110) }]
-    ], L, bas);
-    var ki = gez.kIced;
-    var adKf = [
-      [0, { transform: 'translate(0px,0%)' }],
-      [T.iced, { transform: 'translate(0px,0%)' }, EGRI.cik],
-      [T.iced + Z.yazi, { transform: 'translate(' + ki.toFixed(2) + 'px,0%)' }]
-    ];
-    var maskeKf = [[0, { transform: 'translateY(0%)' }]];
-    if (Y.tur === 'T' && EKRAN === 'soguk') {
-      adKf.push([T.pCik, { transform: 'translate(' + ki.toFixed(2) + 'px,0%)' }, EGRI.gir]);
-      adKf.push([T.pCik + Z.yaziCik, { transform: 'translate(' + ki.toFixed(2) + 'px,-115%)' }]);
-      adKf.push([T.pCik + Z.yaziCik + ESIK, { transform: 'translate(' + ki.toFixed(2) + 'px,115%)' }]);
-      adKf.push([T.geri, { transform: 'translate(' + ki.toFixed(2) + 'px,115%)' }, EGRI.cik]);
-      adKf.push([T.geri + Z.yazi, { transform: 'translate(' + ki.toFixed(2) + 'px,0%)' }]);
-      maskeKf = [[0, { transform: 'translateY(0%)' }], [T.pCik, { transform: 'translateY(0%)' }, EGRI.gir],
-        [T.pCik + Z.yaziCik, { transform: 'translateY(-115%)' }], [T.pCik + Z.yaziCik + ESIK, { transform: 'translateY(115%)' }],
-        [T.geri, { transform: 'translateY(115%)' }, EGRI.cik], [T.geri + Z.yazi, { transform: 'translateY(0%)' }]];
-    }
-    adKf.push([T.icedGeri, { transform: 'translate(' + ki.toFixed(2) + 'px,0%)' }, EGRI.kay]);
-    adKf.push([T.icedGeri + Z.yaziCik + 0.1, { transform: 'translate(0px,0%)' }]);
-    iz(adkok, adKf, L, bas);
-    iz(gez.querySelector('.k-maske'), maskeKf, L, bas);
-    var fic = gez.querySelector('.k-fiyatic');
-    var fCik = Y.tur === 'T' ? T.pCik : T.inis;
-    var fDon = Y.tur === 'T' ? T.geri : T.R0 + 0.3;
-    iz(fic, [
-      [0, { transform: tyy(0) }],
-      [fCik, { transform: tyy(0) }, EGRI.gir],
-      [fCik + Z.yaziCik, { transform: tyy(-108) }],
-      [fCik + Z.yaziCik + ESIK, { transform: tyy(108) }],
-      [fDon, { transform: tyy(108) }, EGRI.cik],
-      [fDon + Z.yazi, { transform: tyy(0) }]
-    ], L, bas);
-    if (EKRAN === 'sicak') {
-      var u = q('.k-uyanis[data-urun="' + Y.urun + '"]');
-      var pen = u.querySelector('.k-pencere'), kop = pen.querySelector('.k-satir');
-      var gw = u.kGen + 1;
-      var bit = T.don + T.g;
-      iz(pen, [
-        [0, { transform: txx(gw) }, EGRI.uyan],
-        [Z.uyan, { transform: txx(0) }],
-        [bit, { transform: txx(0) }, EGRI.uyan],
-        [bit + Z.uyan, { transform: txx(gw) }]
-      ], L, bas);
-      iz(kop, [
-        [0, { transform: txx(-gw) }, EGRI.uyan],
-        [Z.uyan, { transform: txx(0) }],
-        [bit, { transform: txx(0) }, EGRI.uyan],
-        [bit + Z.uyan, { transform: txx(-gw) }]
-      ], L, bas);
-      if (Y.tur === 'T') {
-        var mr = bantIndeksi(r.y + r.h / 2);
-        var maxd = Math.max(mr, O.nBant - 1 - mr);
-        bantKur(L, bas, function (i) {
-          var d = Math.abs(i - mr);
-          return [[0, -101],
-            [T.sDol + Z.kademe * d, 0],
-            [T.ac + Z.kademe * d, 101],
-            [T.kap + Z.kademe * (maxd - d), 0],
-            [T.bos + Z.kademe * (maxd - d), -101]];
-        });
-        filmKatman(q('.k-tam'), T, L, bas);
-      }
-    } else {
-      var mv = bantIndeksi(yr + r.h / 2 - sk.y);
-      var maxv = Math.max(mv, O.nBant - 1 - mv);
-      var ab = O.altBant;
-      bantKur(L, bas, function (i) {
-        var d = Math.abs(i - mv);
-        var p = [[0, 101], [T.dol + Z.kademe * d, 0]];
-        if (Y.tur === 'D' && i !== ab) {
-          p.push([T.ac + Z.kademe * (ab - 1 - i), -101]);
-          p.push([T.kap + Z.kademe * i, 0]);
-        }
-        p.push([(Y.tur === 'T' ? T.bosSahne : T.bos) + Z.kademe * (maxv - d), 101]);
-        return p;
-      });
-      if (Y.tur === 'D') { filmKatman(q('.k-film'), T, L, bas); }
-      buyukKur(Y, L, bas, T);
-      if (Y.tur === 'T') {
-        var pn = q('.k-pano[data-urun="' + Y.urun + '"]');
-        var ss = pn ? Array.prototype.slice.call(pn.querySelectorAll('.k-ps > span')) : [];
-        for (var si = 0; si < ss.length; si++) {
-          var g1 = T.pYaz + Z.panoKademe * si, c1 = T.R0 + 0.25 + Z.panoKademe * (ss.length - 1 - si);
-          iz(ss[si], [
-            [0, { transform: tyy(105) }],
-            [g1, { transform: tyy(105) }, EGRI.cik],
-            [g1 + Z.panoSure, { transform: tyy(0) }],
-            [c1, { transform: tyy(0) }, EGRI.gir],
-            [c1 + Z.yaziCik, { transform: tyy(-105) }]
-          ], L, bas);
-        }
-        iz(q('.k-cizgi'), [
-          [0, { transform: 'scaleX(0)' }],
-          [T.cizgi, { transform: 'scaleX(0)' }, EGRI.bant],
-          [T.cizgi + 0.7, { transform: 'scaleX(1)' }],
-          [T.R0 + 0.1, { transform: 'scaleX(1)' }, EGRI.gir],
-          [T.R0 + 0.55, { transform: 'scaleX(0)' }]
-        ], L, bas);
-      }
-    }
-    zamanla();
-  }
-  function alttaTaban() {
-    var fsB = A.buyukAlt * O.vh;
-    var orta = O.altUst + (O.sahne.y + O.sahne.h - O.altUst) / 2;
-    return orta + 0.727 * fsB / 2;
-  }
-  function filmKatman(el, T, L, bas) {
-    iz(el, [
-      [0, { opacity: 0 }],
-      [T.on - ESIK, { opacity: 0 }],
-      [T.on, { opacity: 1 }],
-      [T.off, { opacity: 1 }],
-      [T.off + ESIK, { opacity: 0 }]
-    ], L, bas);
-  }
-  function buyukKur(Y, L, bas, T) {
-    var anah = Y.tur === 'T' ? Y.urun : (urunler[Y.urun].etiket || Y.urun);
-    var b = q('.k-buyuk[data-urun="' + anah + '"]');
-    if (!b) { return; }
-    var fs = (Y.tur === 'T' ? A.buyukPano : A.buyukAlt) * O.vh;
-    b.style.fontSize = fs.toFixed(2) + 'px';
-    var bw = b.offsetWidth;
-    var sk = O.sahne;
-    var tb = Y.tur === 'T' ? O.sonTaban : alttaTaban();
-    var x = sk.x + sk.w - O.ins - bw + A.optik * fs;
-    px(b, 'left', x);
-    px(b, 'top', tb - 0.8633 * fs);
-    var rk = Array.prototype.slice.call(b.querySelectorAll('.k-rk > span'));
-    var n = rk.length;
-    for (var i = 0; i < n; i++) {
-      var g = T.inis + 0.12 + Z.rakam * i;
-      var c = T.R0 + Z.rakamCik * i;
-      iz(rk[i], [
-        [0, { transform: tyy(104) }],
-        [g, { transform: tyy(104) }, EGRI.cik],
-        [g + Z.rakamSure, { transform: tyy(0) }],
-        [c, { transform: tyy(0) }, EGRI.gir],
-        [c + Z.yaziCik, { transform: tyy(-104) }]
-      ], L, bas);
-    }
-  }
-  function tatliKur(Y, U, L, T, bas) {
-    if (EKRAN !== 'soguk') { zamanla(); return; }
-    var ab = O.altBant;
-    var maxd = ab;
-    bantKur(L, bas, function (i) {
-      var d = Math.abs(ab - i);
-      var p = [[0, 101], [T.dol + Z.kademe * d, 0]];
-      if (i !== ab) {
-        p.push([T.ac + Z.kademe * (ab - 1 - i), -101]);
-        p.push([T.kap + Z.kademe * i, 0]);
-      }
-      p.push([T.bos + Z.kademe * (maxd - d), 101]);
-      return p;
-    });
-    filmKatman(q('.k-film'), T, L, bas);
-    var e = q('.k-etiket[data-urun="' + (U.etiket || Y.urun) + '"]');
-    var tb = alttaTaban();
-    px(e, 'top', tb - e.kTaban);
-    var ad = e.querySelector('.ad .k-fiyatic'), fi = e.querySelector('.fiyat .k-fiyatic');
-    iz(e, [[0, { opacity: 0 }], [T.ad - ESIK, { opacity: 0 }], [T.ad, { opacity: 1 }], [T.cik + Z.yaziCik, { opacity: 1 }], [T.cik + Z.yaziCik + ESIK, { opacity: 0 }]], L, bas);
-    iz(ad, [
-      [0, { transform: tyy(108) }],
-      [T.ad, { transform: tyy(108) }, EGRI.cik],
-      [T.ad + Z.yazi, { transform: tyy(0) }],
-      [T.cik, { transform: tyy(0) }, EGRI.gir],
-      [T.cik + Z.yaziCik, { transform: tyy(-108) }]
-    ], L, bas);
-    iz(fi, [
-      [0, { transform: tyy(108) }],
-      [T.ad + 0.1, { transform: tyy(108) }, EGRI.cik],
-      [T.ad + 0.1 + Z.yazi, { transform: tyy(0) }],
-      [T.inis, { transform: tyy(0) }, EGRI.gir],
-      [T.inis + Z.yaziCik, { transform: tyy(-108) }],
-      [T.inis + Z.yaziCik + ESIK, { transform: tyy(108) }],
-      [T.R0 + 0.3, { transform: tyy(108) }, EGRI.cik],
-      [T.R0 + 0.3 + Z.yazi, { transform: tyy(0) }],
-      [T.cik + 0.06, { transform: tyy(0) }, EGRI.gir],
-      [T.cik + 0.06 + Z.yaziCik, { transform: tyy(-108) }]
-    ], L, bas);
-    buyukKur(Y, L, bas, T);
-    zamanla();
-  }
-  var video = q('.k-video');
-  var kareler = qa('.k-kare');
-  var sonVT = -1, sonVTan = 0, canli = false, sonDeneme = 0, baslatZ = null, yuklenen = null, atla = null, sonSarma = 0;
-  function oynat() { var s = video.play(); if (s && s.catch) { s.catch(function () {}); } }
-  function filmYuvasi(t) {
-    var Y = A.yuvalar, cur = yuvaBul(t);
-    for (var s = 0; s < Y.length; s++) {
-      var ii = (cur.i + s) % Y.length;
-      if (Y[ii].ekran === EKRAN) {
-        var fark = ((Y[ii].bas - Y[cur.i].bas) % A.dongu + A.dongu) % A.dongu;
-        return { y: Y[ii], bas: cur.bas + fark * 1000 };
-      }
-    }
-    return null;
-  }
-  function kareSec(urun, rel, sure) {
-    var an = rel < sure ? 'ilk' : 'son';
-    for (var i = 0; i < kareler.length; i++) {
-      var k = kareler[i];
-      k.classList.toggle('k-acik', k.getAttribute('data-urun') === urun && k.getAttribute('data-an') === an);
-    }
-  }
-  function videoYonet(t) {
-    if (!video) { return; }
-    var f = filmYuvasi(t);
-    if (!f) { return; }
-    var U = urunler[f.y.urun];
-    var fb = f.bas + f.y.t.vb * 1000;
-    var rel = t - fb;
-    var src = U.film;
-    if (yuklenen !== src) {
-      yuklenen = src;
-      video.src = src;
-      video.load();
-      sonVT = -1; canli = false;
-      atla = (sec.ortadanSar === false && rel > 300) ? fb : null;
-    }
-    if (atla === fb) {
-      if (!video.paused) { video.pause(); }
-      video.classList.remove('k-canli');
-      kareSec(f.y.urun, rel / 1000, U.hareketSon);
-      return;
-    }
-    kareSec(f.y.urun, rel / 1000, U.hareketSon);
-    var sure = U.sure * 1000;
-    if (video.currentTime !== sonVT) { sonVT = video.currentTime; sonVTan = t; if (!video.paused) { canli = true; } }
-    else if (t - sonVTan > 800) { canli = false; }
-    var hazir = video.readyState >= 2 && !video.seeking;
-    if (DONDUR !== null) {
-      if (video.readyState >= 1 && rel >= 0 && rel < sure) {
-        var hedef = Math.min(rel / 1000, U.sure - 0.05);
-        if (Math.abs(video.currentTime - hedef) > 0.02 && !video.seeking) { video.currentTime = hedef; }
-      }
-      video.classList.toggle('k-canli', hazir && rel >= 0 && rel < sure - 100);
-      return;
-    }
-    if (rel < -60000 || rel >= sure - 80) {
-      if (!video.paused) { video.pause(); }
-      video.classList.remove('k-canli');
-      if (rel < 0 && video.readyState >= 1 && video.currentTime > 0.04 && !video.seeking) { video.currentTime = 0; }
-      return;
-    }
-    if (rel < 0) {
-      if (!video.paused) { video.pause(); }
-      if (video.readyState >= 1 && !video.seeking && video.currentTime > 0.04) { video.currentTime = 0; }
-      if (!baslatZ && rel > -1500) { baslatZ = setTimeout(function () { baslatZ = null; oynat(); }, Math.max(0, -rel)); }
-      video.classList.remove('k-canli');
-      return;
-    }
-    if (video.paused && t - sonDeneme > 700) { sonDeneme = t; oynat(); }
-    if (video.playbackRate !== 1) { video.playbackRate = 1; }
-    var sapma = rel / 1000 - video.currentTime;
-    if (sec.ortadanSar !== false && video.readyState >= 1 && !video.seeking && !video.paused &&
-        Math.abs(sapma) > 0.5 && t - sonSarma > 2000) {
-      sonSarma = t;
-      video.currentTime = Math.min(rel / 1000 + 0.08, U.sure - 0.1);
-    }
-    video.classList.toggle('k-canli', hazir && (rel < 600 || canli));
-  }
-  function tik() {
-    var t = simdi();
-    var y = yuvaBul(t);
-    if (kurulan !== y.bas) { yuvaKur(y.i, y.bas); }
-    videoYonet(t);
-  }
-  var aralik = null;
-  function basla() {
-    yerlestir();
-    if (DONDUR !== null) {
-      tik();
-      var git = function () { videoYonet(simdi()); };
-      if (video) { video.addEventListener('loadedmetadata', git); video.addEventListener('seeked', git); video.addEventListener('loadeddata', git); }
-      return;
-    }
-    tik();
-    aralik = setInterval(tik, 120);
-  }
-  function yenile() {
-    yerlestir();
-    if (kurulan !== null) { var y = yuvaBul(simdi()); yuvaKur(y.i, y.bas); }
-  }
-  basla();
-  return {
-    durdur: function () { if (aralik) { clearInterval(aralik); } if (baslatZ) { clearTimeout(baslatZ); } temizle(); if (video) { video.pause(); } },
-    yenile: yenile,
-    olcu: function () { return O; }
-  };
-}
+<div class="kis-pencere" aria-hidden="true"><div class="kis-pencere-kare"><img src="pencere/tek-eldiven.jpg" alt="" data-i="0"><img src="pencere/ilk-yudum.jpg" alt="" data-i="1"><img src="pencere/esik.jpg" alt="" data-i="2"><img src="pencere/avuc.jpg" alt="" data-i="3"><img src="pencere/ikram.jpg" alt="" data-i="4"></div><div class="kis-pencere-kunye"><span data-i="0">Sıcak Çikolata</span><span data-i="1">Salep</span><span data-i="2">Filtre Kahve</span><span data-i="3">Latte</span><span data-i="4">San Sebastian</span></div></div>
+<div class="kis-film" data-an="0"><video src="film/esik.mp4" muted playsinline preload="auto"></video><span class="kis-ad siyah" style="left:5vw;bottom:8vh">Filtre Kahve</span></div>
+<div class="kis-film" data-an="2"><video src="film/iced-americano.mp4" muted playsinline preload="auto"></video><span class="kis-ad kutu" style="left:5vw;bottom:8vh">Iced Americano</span></div>
+<div class="kis-film" data-an="3"><video src="film/ikram.mp4" muted playsinline preload="auto"></video><span class="kis-ad siyah" style="left:5vw;top:8vh">San Sebastian</span></div>
+<div class="kis-film" data-an="5"><video src="film/teslim.mp4" muted playsinline preload="auto"></video><span class="kis-ad siyah" style="left:5vw;bottom:5vh">Americano</span></div>
+<script id="kis-motor">
 (function () {
-  var A = {"dongu":125,"ara":2.5,"ins":1.8,"satirPunto":2.4,"buyukAlt":6.2,"buyukPano":22,"optik":0.052,"panoPunto":8.8,"panoOptik":0.045,"zaman":{"bant":0.62,"kademe":0.028,"uyan":0.55,"kayma":0.7,"kenet":0.45,"yazi":0.5,"yaziCik":0.35,"rakam":0.06,"rakamSure":0.6,"rakamCik":0.04,"panoKademe":0.09,"panoSure":0.6},"sahne":{"x":0.522495,"y":0.113139,"w":0.427505,"h":0.836861,"alt":0.738352},"satir":{"americano":{"x":0.05,"y":0.304759,"w":0.4275,"h":0.050824,"hli":0.050824},"latte":{"x":0.522495,"y":0.153213,"w":0.427505,"h":0.049898,"hli":0.049898},"mocha":{"x":0.522495,"y":0.355583,"w":0.427505,"h":0.050824,"hli":0.068954},"caramel":{"x":0.522495,"y":0.424537,"w":0.427505,"h":0.050824,"hli":0.068954},"matcha":{"x":0.522495,"y":0.555556,"w":0.427505,"h":0.049898,"hli":0.049898},"ube":{"x":0.522495,"y":0.605454,"w":0.427505,"h":0.050824,"hli":0.050824}},"urunler":{"americano":{"film":"film/americano.mp4","sure":12.4167,"hareketSon":9.875,"etiket":null},"latte":{"film":"film/latte.mp4","sure":10.5833,"hareketSon":4,"etiket":null},"mocha":{"film":"film/mocha.mp4","sure":10.2083,"hareketSon":3.958,"etiket":null},"matcha":{"film":"film/matcha.mp4","sure":7.5,"hareketSon":3.875,"etiket":null},"caramel":{"film":"film/caramel.mp4","sure":6.875,"hareketSon":3.625,"etiket":null},"ube":{"film":"film/ube.mp4","sure":10.6667,"hareketSon":3.667,"etiket":null},"kupa":{"film":"film/kupa.mp4","sure":10,"hareketSon":3.958,"etiket":"spoonful"},"kase":{"film":"film/kase.mp4","sure":10.5833,"hareketSon":3.625,"etiket":"spoonful"}},"yuvalar":[{"urun":"matcha","tur":"T","ekran":"sicak","bas":0,"L":12.974,"t":{"gz":0.55,"g":1.237,"dol":0.15,"iced":1.837,"ad":2.037,"pCik":2.437,"pYaz":2.637,"cizgi":2.937,"inis":3.187,"sDol":1.495,"on":2.519,"ac":2.619,"vb":2.269,"kap":8.269,"off":9.293,"bos":9.353,"R0":9.137,"geri":9.937,"icedGeri":10.537,"don":11.137,"bosSahne":11.387}},{"urun":"latte","tur":"D","ekran":"soguk","bas":14.174,"L":15.648,"t":{"gz":0.55,"g":1.237,"dol":0.15,"iced":1.837,"ad":2.037,"on":2.787,"ac":2.887,"vb":2.537,"inis":5.537,"R0":11.437,"kap":11.637,"off":12.661,"geri":12.661,"icedGeri":13.211,"don":13.811,"bos":14.061}},{"urun":"kupa","tur":"S","ekran":"soguk","bas":31.022,"L":11.958,"t":{"dol":0,"ad":0.6,"on":1.3,"ac":1.4,"vb":1.05,"inis":3.45,"R0":9.35,"kap":9.55,"off":10.574,"cik":10.624,"bos":10.924}},{"urun":"americano","tur":"T","ekran":"sicak","bas":44.18,"L":17.479,"t":{"gz":0.55,"g":1.055,"dol":0.15,"iced":1.655,"ad":1.855,"pCik":2.255,"pYaz":2.455,"cizgi":2.755,"inis":3.005,"sDol":1.282,"on":2.306,"ac":2.406,"vb":2.056,"kap":12.956,"off":13.98,"bos":14.04,"R0":13.824,"geri":14.624,"icedGeri":15.224,"don":15.824,"bosSahne":16.074}},{"urun":"ube","tur":"D","ekran":"soguk","bas":62.859,"L":15.715,"t":{"gz":0.55,"g":1.237,"dol":0.15,"iced":1.837,"ad":2.037,"on":2.787,"ac":2.887,"vb":2.537,"inis":5.604,"R0":11.504,"kap":11.704,"off":12.728,"geri":12.728,"icedGeri":13.278,"don":13.878,"bos":14.128}},{"urun":"kase","tur":"S","ekran":"soguk","bas":79.774,"L":12.558,"t":{"dol":0,"ad":0.6,"on":1.3,"ac":1.4,"vb":1.05,"inis":4.05,"R0":9.95,"kap":10.15,"off":11.174,"cik":11.224,"bos":11.524}},{"urun":"caramel","tur":"T","ekran":"sicak","bas":93.532,"L":12.924,"t":{"gz":0.55,"g":1.237,"dol":0.15,"iced":1.837,"ad":2.037,"pCik":2.437,"pYaz":2.637,"cizgi":2.937,"inis":3.187,"sDol":1.495,"on":2.519,"ac":2.619,"vb":2.269,"kap":7.636,"off":8.66,"bos":8.72,"R0":9.087,"geri":9.887,"icedGeri":10.487,"don":11.087,"bosSahne":11.337}},{"urun":"mocha","tur":"D","ekran":"soguk","bas":107.656,"L":15.248,"t":{"gz":0.55,"g":1.237,"dol":0.15,"iced":1.837,"ad":2.037,"on":2.787,"ac":2.887,"vb":2.537,"inis":5.137,"R0":11.037,"kap":11.237,"off":12.261,"geri":12.261,"icedGeri":12.811,"don":13.411,"bos":13.661}}]};
-  var kok = document.documentElement;
-  var ara = location.search;
-  function sayiParam(ad) {
-    var m = new RegExp('[?&]' + ad + '=(-?[0-9.]+)').exec(ara);
-    return m ? parseFloat(m[1]) : null;
+  var D = {"sure": 82, "gecis": 0.5, "pencereAdim": 4.0, "anlar": [{"bas": 0, "ekran": "sol", "film": "esik", "ad": "Filtre Kahve", "satir": "Filtre Kahve", "sure": 4.0}, {"bas": 16, "ekran": "sag", "film": "avuc", "ad": "Latte", "satir": "Latte", "sure": 4.0}, {"bas": 32, "ekran": "sol", "film": "iced-americano", "ad": "Iced Americano", "satir": "Americano", "sure": 5.0}, {"bas": 49, "ekran": "sol", "film": "ikram", "ad": "San Sebastian", "satir": "San Sebastian", "sure": 5.0}, {"bas": 49, "ekran": "sag", "film": "iki-kasik", "ad": "Spoonful", "satir": "Spoonful", "sure": 5.0}, {"bas": 66, "ekran": "sol", "film": "teslim", "ad": "Americano", "satir": "Americano", "sure": 4.0}], "pencere": [{"kare": "tek-eldiven", "ad": "Sıcak Çikolata"}, {"kare": "ilk-yudum", "ad": "Salep"}, {"kare": "esik", "ad": "Filtre Kahve"}, {"kare": "avuc", "ad": "Latte"}, {"kare": "ikram", "ad": "San Sebastian"}]};
+  var q = new URLSearchParams(location.search);
+  var BAS = q.has('bas') ? Number(q.get('bas')) : 0;
+  var DONDUR = q.has('dondur') ? Number(q.get('dondur')) : null;
+  var EKRAN = document.documentElement.getAttribute('data-kis-ekran');
+  function tamAn(t, ekran) {
+    for (var i = 0; i < D.anlar.length; i++) {
+      var a = D.anlar[i];
+      if (a.ekran === ekran && t >= a.bas && t < a.bas + a.sure) return i;
+    }
+    return -1;
   }
-  var az = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
-  if (az || !document.body.animate || !document.timeline) { kok.className += ' k-sabit'; return; }
-  var sec = { ekran: 'soguk', capa: sayiParam('bas') || 0, dondur: sayiParam('dondur'), kaydir: (sayiParam('t') || 0) * 1000 };
-  var m = null;
-  function basla() { if (!m) { m = kinetikKur(document.body, A, sec); } }
-  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(basla); } else { window.addEventListener('load', basla); }
-  var bekle = null;
-  window.addEventListener('resize', function () {
-    if (bekle) { clearTimeout(bekle); }
-    bekle = setTimeout(function () { if (m) { m.yenile(); } }, 150);
+  function pencereSira(t) {
+    var menu = t;
+    for (var i = 0; i < D.anlar.length; i++) {
+      var a = D.anlar[i];
+      if (a.ekran !== 'sol') continue;
+      menu -= Math.max(0, Math.min(t, a.bas + a.sure) - a.bas);
+    }
+    var i = Math.floor(menu / D.pencereAdim) % D.pencere.length;
+    var r = tamAn(t, 'sag');
+    if (r >= 0 && D.pencere[i].kare === D.anlar[r].film) i = (i + 1) % D.pencere.length;
+    return i;
+  }
+  function vurgu(t) {
+    var s = tamAn(t, 'sol');
+    if (s >= 0) return D.anlar[s].satir;
+    if (tamAn(t, 'sag') >= 0 && tamAn(t, 'sol') < 0 && EKRAN === 'sag') return null;
+    return D.pencere[pencereSira(t)].ad;
+  }
+  var satirlar = {};
+  Array.prototype.forEach.call(document.querySelectorAll('li.urun'), function (li) {
+    var ad = li.querySelector('.ad');
+    if (ad) satirlar[ad.textContent.trim()] = li;
   });
+  var filmler = Array.prototype.map.call(document.querySelectorAll('.kis-film'), function (el) {
+    return { el: el, v: el.querySelector('video'), an: D.anlar[Number(el.getAttribute('data-an'))] };
+  });
+  var pImg = document.querySelectorAll('.kis-pencere-kare img');
+  var pAd = document.querySelectorAll('.kis-pencere-kunye span');
+  var sonVurgu, sonPencere = -1;
+  function zaman() {
+    if (DONDUR !== null) return DONDUR;
+    var t = ((Date.now() - BAS) / 1000) % D.sure;
+    return t < 0 ? t + D.sure : t;
+  }
+  function adim() {
+    var t = zaman();
+    filmler.forEach(function (f) {
+      var a = f.an, e = t - a.bas;
+      if (e > D.sure / 2) e -= D.sure; else if (e < -D.sure / 2) e += D.sure;
+      var acik = e >= 0 && e < a.sure - D.gecis;
+      f.el.classList.toggle('acik', acik);
+      f.el.classList.toggle('ad-acik', e >= 0.9 && e < a.sure - 0.7);
+      if (e >= -1.5 && e < a.sure) {
+        var hedef = Math.max(0, e);
+        if (DONDUR !== null) { f.v.pause(); if (Math.abs(f.v.currentTime - hedef) > 0.05) f.v.currentTime = hedef; }
+        else if (e < 0) { if (!f.v.paused) f.v.pause(); if (f.v.currentTime > 0.05) f.v.currentTime = 0; }
+        else {
+          if (Math.abs(f.v.currentTime - hedef) > 0.5) f.v.currentTime = hedef;
+          if (f.v.paused) { var p = f.v.play(); if (p && p.catch) p.catch(function () {}); }
+        }
+      } else if (!f.v.paused) f.v.pause();
+    });
+    var p = pencereSira(t);
+    if (p !== sonPencere && pImg.length) {
+      for (var i = 0; i < pImg.length; i++) { pImg[i].classList.toggle('acik', i === p); pAd[i].classList.toggle('acik', i === p); }
+      sonPencere = p;
+    }
+    var v = vurgu(t);
+    if (v !== sonVurgu) {
+      if (sonVurgu && satirlar[sonVurgu]) satirlar[sonVurgu].classList.remove('kis-yanik');
+      if (v && satirlar[v]) satirlar[v].classList.add('kis-yanik');
+      sonVurgu = v;
+    }
+  }
+  window.kisZaman = zaman;
+  adim();
+  setInterval(adim, 100);
 })();
 </script>
 </body>
