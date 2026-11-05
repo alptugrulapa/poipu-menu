@@ -306,13 +306,17 @@ li.urun.kis-yanik .tarif { color: #F8DCBE; }
 .kis-film { position: fixed; left: 0; top: 0; width: 100vw; height: 100vh; z-index: 50; opacity: 0;
   transition: opacity .5s ease; background: #000; pointer-events: none; }
 .kis-film.acik { opacity: 1; }
-.kis-film video { position: absolute; left: 0; top: 0; width: 100%; height: 100%; display: block; }
+.kis-film img, .kis-film video { position: absolute; left: 0; top: 0; width: 100%; height: 100%; display: block; }
+.kis-film img { opacity: 0; }
+.kis-film img.acik { opacity: 1; }
+.kis-film video { opacity: 0; }
+.kis-film video.canli { opacity: 1; }
 .kis-ad { position: absolute; font-size: 5.2vh; font-weight: 500; letter-spacing: -0.01em; line-height: 1;
   white-space: nowrap; opacity: 0; transition: opacity .6s ease; }
 .kis-ad.siyah { color: #000000; }
 .kis-ad.bej { color: #F8DCBE; }
 .kis-ad.kutu { color: #F8DCBE; background: #44240F; padding: 1.4vh 1.2vw; border-radius: 0.6vh; }
-.kis-film.ad-acik .kis-ad { opacity: 1; }
+.kis-ad.acik { opacity: 1; }
 </style>
 </head>
 <body>
@@ -455,10 +459,7 @@ function poipuMevsimIcinde(simdi, baslangic, bitis) {
 })();
 </script>
 <div class="kis-pencere" aria-hidden="true"><div class="kis-pencere-kare"><img src="pencere/tek-eldiven.jpg" alt="" data-i="0"><img src="pencere/ilk-yudum.jpg" alt="" data-i="1"><img src="pencere/esik.jpg" alt="" data-i="2"><img src="pencere/avuc.jpg" alt="" data-i="3"><img src="pencere/ikram.jpg" alt="" data-i="4"></div><div class="kis-pencere-kunye"><span data-i="0">Sıcak Çikolata</span><span data-i="1">Salep</span><span data-i="2">Filtre Kahve</span><span data-i="3">Latte</span><span data-i="4">San Sebastian</span></div></div>
-<div class="kis-film" data-an="0"><video src="film/esik.mp4" muted playsinline preload="auto"></video><span class="kis-ad siyah" style="left:5vw;bottom:8vh">Filtre Kahve</span></div>
-<div class="kis-film" data-an="2"><video src="film/iced-americano.mp4" muted playsinline preload="auto"></video><span class="kis-ad kutu" style="left:5vw;bottom:8vh">Iced Americano</span></div>
-<div class="kis-film" data-an="3"><video src="film/ikram.mp4" muted playsinline preload="auto"></video><span class="kis-ad siyah" style="left:5vw;top:8vh">San Sebastian</span></div>
-<div class="kis-film" data-an="5"><video src="film/teslim.mp4" muted playsinline preload="auto"></video><span class="kis-ad siyah" style="left:5vw;bottom:5vh">Americano</span></div>
+<div class="kis-film"><img src="kare/esik.jpg" alt="" data-an="0"><img src="kare/iced-americano.jpg" alt="" data-an="2"><img src="kare/ikram.jpg" alt="" data-an="3"><img src="kare/teslim.jpg" alt="" data-an="5"><video class="kis-video" muted playsinline preload="auto"></video><span class="kis-ad siyah" style="left:5vw;bottom:8vh" data-an="0">Filtre Kahve</span><span class="kis-ad kutu" style="left:5vw;bottom:8vh" data-an="2">Iced Americano</span><span class="kis-ad siyah" style="left:5vw;top:8vh" data-an="3">San Sebastian</span><span class="kis-ad siyah" style="left:5vw;bottom:5vh" data-an="5">Americano</span></div>
 <script id="kis-motor">
 (function () {
   var D = {"sure": 82, "gecis": 0.5, "pencereAdim": 4.0, "anlar": [{"bas": 0, "ekran": "sol", "film": "esik", "ad": "Filtre Kahve", "satir": "Filtre Kahve", "sure": 4.0}, {"bas": 16, "ekran": "sag", "film": "avuc", "ad": "Latte", "satir": "Latte", "sure": 4.0}, {"bas": 32, "ekran": "sol", "film": "iced-americano", "ad": "Iced Americano", "satir": "Americano", "sure": 5.0}, {"bas": 49, "ekran": "sol", "film": "ikram", "ad": "San Sebastian", "satir": "San Sebastian", "sure": 5.0}, {"bas": 49, "ekran": "sag", "film": "iki-kasik", "ad": "Spoonful", "satir": "Spoonful", "sure": 5.0}, {"bas": 66, "ekran": "sol", "film": "teslim", "ad": "Americano", "satir": "Americano", "sure": 4.0}], "pencere": [{"kare": "tek-eldiven", "ad": "Sıcak Çikolata"}, {"kare": "ilk-yudum", "ad": "Salep"}, {"kare": "esik", "ad": "Filtre Kahve"}, {"kare": "avuc", "ad": "Latte"}, {"kare": "ikram", "ad": "San Sebastian"}]};
@@ -496,35 +497,93 @@ function poipuMevsimIcinde(simdi, baslangic, bitis) {
     var ad = li.querySelector('.ad');
     if (ad) satirlar[ad.textContent.trim()] = li;
   });
-  var filmler = Array.prototype.map.call(document.querySelectorAll('.kis-film'), function (el) {
-    return { el: el, v: el.querySelector('video'), an: D.anlar[Number(el.getAttribute('data-an'))] };
-  });
+  var katman = document.querySelector('.kis-film');
+  var video = document.querySelector('.kis-video');
+  var kareler = document.querySelectorAll('.kis-film img');
+  var adlar = document.querySelectorAll('.kis-film .kis-ad');
+  var benim = [];
+  D.anlar.forEach(function (a, i) { if (a.ekran === EKRAN) benim.push(i); });
   var pImg = document.querySelectorAll('.kis-pencere-kare img');
   var pAd = document.querySelectorAll('.kis-pencere-kunye span');
   var sonVurgu, sonPencere = -1;
+  var KAYMA = 0;
+  function saatOlc() {
+    var onceki = null, n = 0;
+    function dene() {
+      if (n++ > 40) return;
+      var g = Date.now();
+      fetch(location.pathname + '?saat=' + g, { method: 'HEAD', cache: 'no-store' }).then(function (r) {
+        var c = Date.now(), d = Date.parse(r.headers.get('Date') || '');
+        if (isNaN(d)) return;
+        var orta = (g + c) / 2;
+        if (onceki && d > onceki.d && c - g < 1500 && onceki.c - onceki.g < 1500) {
+          KAYMA = d - (orta + onceki.orta) / 2;
+          return;
+        }
+        onceki = { d: d, g: g, c: c, orta: orta };
+        setTimeout(dene, 90);
+      }).catch(function () { setTimeout(dene, 2000); });
+    }
+    dene();
+  }
+  function simdi() { return Date.now() + KAYMA; }
   function zaman() {
     if (DONDUR !== null) return DONDUR;
-    var t = ((Date.now() - BAS) / 1000) % D.sure;
+    var t = ((simdi() - BAS) / 1000) % D.sure;
     return t < 0 ? t + D.sure : t;
+  }
+  function goreli(t, a) {
+    var e = t - a.bas;
+    if (e > D.sure / 2) e -= D.sure; else if (e < -D.sure / 2) e += D.sure;
+    return e;
+  }
+  function siradaki(t) {
+    var en = null, enBekle = Infinity;
+    benim.forEach(function (i) {
+      var a = D.anlar[i], e = goreli(t, a);
+      var bekle = (e >= 0 && e < a.sure) ? -1 : ((a.bas - t) % D.sure + D.sure) % D.sure;
+      if (bekle < enBekle) { enBekle = bekle; en = i; }
+    });
+    return en;
+  }
+  var yuklenen = null, baslatZ = null, sonDeneme = 0, sonSarma = 0, sonVT = -1, sonVTan = 0, canli = false;
+  function oynat() { var p = video.play(); if (p && p.catch) p.catch(function () {}); }
+  function filmYonet(t) {
+    if (!video) return;
+    var i = siradaki(t);
+    if (i === null) return;
+    var a = D.anlar[i], e = goreli(t, a), ms = Date.now();
+    var src = 'film/' + a.film + '.mp4';
+    if (yuklenen !== src) { yuklenen = src; video.src = src; video.load(); sonVT = -1; canli = false; }
+    var oynuyor = e >= 0 && e < a.sure;
+    katman.classList.toggle('acik', e >= 0 && e < a.sure - D.gecis);
+    for (var k = 0; k < kareler.length; k++) kareler[k].classList.toggle('acik', Number(kareler[k].getAttribute('data-an')) === i);
+    for (k = 0; k < adlar.length; k++) adlar[k].classList.toggle('acik', Number(adlar[k].getAttribute('data-an')) === i && e >= 0.9 && e < a.sure - 0.7);
+    if (video.currentTime !== sonVT) { sonVT = video.currentTime; sonVTan = ms; if (!video.paused) canli = true; }
+    else if (ms - sonVTan > 400) canli = false;
+    if (DONDUR !== null) {
+      if (video.readyState >= 1 && oynuyor && Math.abs(video.currentTime - e) > 0.03 && !video.seeking) video.currentTime = e;
+      video.classList.toggle('canli', video.readyState >= 2 && oynuyor);
+      return;
+    }
+    if (!oynuyor) {
+      if (!video.paused) video.pause();
+      if (video.readyState >= 1 && !video.seeking && video.currentTime > 0.04) video.currentTime = 0;
+      if (e < 0 && e > -1.5 && !baslatZ) baslatZ = setTimeout(function () { baslatZ = null; oynat(); }, Math.max(0, -e * 1000));
+      video.classList.remove('canli');
+      return;
+    }
+    if (video.paused && ms - sonDeneme > 700) { sonDeneme = ms; oynat(); }
+    if (video.playbackRate !== 1) video.playbackRate = 1;
+    if (video.readyState >= 1 && !video.seeking && !video.paused && Math.abs(e - video.currentTime) > 0.5 && ms - sonSarma > 2000) {
+      sonSarma = ms;
+      video.currentTime = Math.min(e + 0.08, a.sure - 0.1);
+    }
+    video.classList.toggle('canli', video.readyState >= 2 && !video.seeking && (canli || e < 0.6));
   }
   function adim() {
     var t = zaman();
-    filmler.forEach(function (f) {
-      var a = f.an, e = t - a.bas;
-      if (e > D.sure / 2) e -= D.sure; else if (e < -D.sure / 2) e += D.sure;
-      var acik = e >= 0 && e < a.sure - D.gecis;
-      f.el.classList.toggle('acik', acik);
-      f.el.classList.toggle('ad-acik', e >= 0.9 && e < a.sure - 0.7);
-      if (e >= -1.5 && e < a.sure) {
-        var hedef = Math.max(0, e);
-        if (DONDUR !== null) { f.v.pause(); if (Math.abs(f.v.currentTime - hedef) > 0.05) f.v.currentTime = hedef; }
-        else if (e < 0) { if (!f.v.paused) f.v.pause(); if (f.v.currentTime > 0.05) f.v.currentTime = 0; }
-        else {
-          if (Math.abs(f.v.currentTime - hedef) > 0.5) f.v.currentTime = hedef;
-          if (f.v.paused) { var p = f.v.play(); if (p && p.catch) p.catch(function () {}); }
-        }
-      } else if (!f.v.paused) f.v.pause();
-    });
+    filmYonet(t);
     var p = pencereSira(t);
     if (p !== sonPencere && pImg.length) {
       for (var i = 0; i < pImg.length; i++) { pImg[i].classList.toggle('acik', i === p); pAd[i].classList.toggle('acik', i === p); }
@@ -538,6 +597,8 @@ function poipuMevsimIcinde(simdi, baslangic, bitis) {
     }
   }
   window.kisZaman = zaman;
+  window.kisKayma = function () { return KAYMA; };
+  if (DONDUR === null && location.protocol !== 'file:') { saatOlc(); setInterval(saatOlc, 600000); }
   adim();
   setInterval(adim, 100);
 })();
